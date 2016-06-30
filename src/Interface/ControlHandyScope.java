@@ -5,7 +5,10 @@
  */
 package Interface;
 import InitHS.*;
+import ConfigHS.*;
+import ConfigGeneratorHS3.*;
 import com.mathworks.toolbox.javabuilder.*;  // MATLAB Java Builder
+import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -15,18 +18,7 @@ import java.util.logging.Logger;
  */
 public class ControlHandyScope {
     
-    private String HS = "hs3.dll";
-    
-    // Configuración para el HandyScope
-    private int TRIGGERSOURCE = 0;
-    private int SENSITIVITIY = 12;
-    private int POSTSAMPLES = 32;
-    private int NMEAN = 100;
-    private int RESOLUTION = 12;
-    
-    // Se recibirá del usuario
-    private double SAMPLES;
-    private double FM;
+    private static String HS = "HS3";
     
     // Configuración del generador
     private int SIGNAL = 5;
@@ -36,14 +28,39 @@ public class ControlHandyScope {
     private double AMPLITUDE;
     private double FSIG;
     
-    private String[] HANDY;
+    private Object[] HANDY;
     
     InitHSC ihsc;
+    ConfigHSC chsc;
+    ConfigGeneratorHS3C config;
     
     public ControlHandyScope() {
         try {
             ihsc = new InitHSC();
-            HANDY = (String[]) ihsc.InitHS(2, HS);
+            HANDY = ihsc.InitHS(2, HS);
+        } catch (MWException ex) {
+            Logger.getLogger(ControlHandyScope.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    // ConfigHS(lib,Samples,Fm)
+    // Samples y Fm los pasa el usuario
+    private void ConfigurationHS(String lib) {
+        try {
+            chsc = new ConfigHSC();
+            Object[] ConfigHS = chsc.ConfigHS(lib,40,10);
+        } catch (MWException ex) {
+            Logger.getLogger(ControlHandyScope.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+    
+    // ConfigGeneratorHS3(sDll,Amplitude,Fsig,Fm,Opcion)
+    // Amplitude, Fsig, Fm los pasa el usuario
+    public void ConfigGenerator(String lib) {
+        try {
+            config = new ConfigGeneratorHS3C();
+            Object[] Conf = config.ConfigGeneratorHS3(1, lib, 30, 10, 10, 2);
+            System.out.println(Arrays.toString(Conf));
         } catch (MWException ex) {
             Logger.getLogger(ControlHandyScope.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -51,19 +68,7 @@ public class ControlHandyScope {
     
     public static void main(String args[]) {
         ControlHandyScope chs = new ControlHandyScope();
-        System.out.println(chs.HANDY[0]);
-        /*MatlabProxyFactoryOptions options = new MatlabProxyFactoryOptions.Builder()
-                .setMatlabLocation("C:\\Program Files\\MATLAB\\MATLAB Production Server\\R2015a\\bin")
-                .build();*/
-        /*MatlabProxyFactory factory = new MatlabProxyFactory(); 
-        try {
-            MatlabProxy proxy = factory.getProxy();
-            proxy.feval("InitHS", "hs3");
-            proxy.disconnect();
-        } catch (MatlabConnectionException ex) {
-            Logger.getLogger(ControlHandyScope.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (MatlabInvocationException ex) {
-            Logger.getLogger(ControlHandyScope.class.getName()).log(Level.SEVERE, null, ex);
-        }*/
+        chs.ConfigurationHS(HS);
+        chs.ConfigGenerator(HS);
     }
 }

@@ -4,7 +4,7 @@ function [Const,Estado]  = InitHS(sDLL)
     TiePieDir = 'G:\Interfaz\tiepie.h';
     
     if ~libisloaded(sDLL)
-       [notfound, warnings]=loadlibrary(sDLL, TiePieDir );
+       [notfound, warnings]=loadlibrary(sDLL, @init);
        pause(0.2)
     end
 
