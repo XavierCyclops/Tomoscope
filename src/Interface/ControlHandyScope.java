@@ -45,10 +45,11 @@ public class ControlHandyScope {
     
     // ConfigHS(lib,Samples,Fm)
     // Samples y Fm los pasa el usuario
-    private void ConfigurationHS(String lib) {
+    // Samples 120000, 0 <= Fm <= 50000
+    public void ConfigurationHS(String lib, double Samples, double Fm) {
         try {
             chsc = new ConfigHSC();
-            Object[] ConfigHS = chsc.ConfigHS(lib,120000,40000);
+            Object[] ConfigHS = chsc.ConfigHS(lib,Samples,Fm);
             System.out.println(Arrays.toString(ConfigHS));
         } catch (MWException ex) {
             Logger.getLogger(ControlHandyScope.class.getName()).log(Level.SEVERE, null, ex);
@@ -57,10 +58,10 @@ public class ControlHandyScope {
     
     // ConfigGeneratorHS3(sDll,Amplitude,Fsig,Fm,Opcion)
     // Amplitude, Fsig, Fm los pasa el usuario
-    public void ConfigGenerator(String lib) {
+    public void ConfigGenerator(String lib, int amplitude, double fsig, double fm, byte opc) {
         try {
             config = new ConfigGeneratorHS3C();
-            Object[] Conf = config.ConfigGeneratorHS3(1, lib, 10, 10, 40000,2);
+            Object[] Conf = config.ConfigGeneratorHS3(1, lib, amplitude, fsig, fm, opc);
             System.out.println(Arrays.toString(Conf));
         } catch (MWException ex) {
             Logger.getLogger(ControlHandyScope.class.getName()).log(Level.SEVERE, null, ex);
@@ -69,8 +70,8 @@ public class ControlHandyScope {
     
     public static void main(String args[]) {
         ControlHandyScope chs = new ControlHandyScope();
-        chs.ConfigurationHS(HS);
-        chs.ConfigGenerator(HS);
+        //chs.ConfigurationHS(HS);
+        //chs.ConfigGenerator(HS);
         //System.out.println(Arrays.toString(HANDY));
     }
 }

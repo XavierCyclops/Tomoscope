@@ -6,6 +6,7 @@
 package Interface;
 
 import java.awt.Color;
+import java.awt.event.KeyEvent;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
@@ -24,10 +25,17 @@ public class Tomografo extends javax.swing.JFrame {
     //double temp;
     
     // Usuario
-    private double AMPLITUDE; // 0 <= AMPLITUDE <= 12
+    private int AMPLITUDE;    // 0 <= AMPLITUDE <= 12
     private double FSIG;      // Número de disparos
     private double FM;        // Frecuencia de muestra; 0 <= FM <= 50000
     private double LADQ;      // Tamanio Adquisicion; 0 <= LADQ <= 120000
+    
+    /*
+    Se crea un nuevo objeto ControlHandyScope que contiene las configuraciones
+    del HS3
+    */
+    private String HS = "HS3";
+    ControlHandyScope chs = new ControlHandyScope();
     
    /* SerialPortEventListener sp = new SerialPortEventListener(){
     public void serialEvent(SerialPortEvent arg0){
@@ -79,7 +87,7 @@ public class Tomografo extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
+        FSig = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -170,10 +178,9 @@ public class Tomografo extends javax.swing.JFrame {
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Frecuencia Transductor");
 
-        jTextField2.setText("[Hz]");
-        jTextField2.addActionListener(new java.awt.event.ActionListener() {
+        FSig.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField2ActionPerformed(evt);
+                FSigActionPerformed(evt);
             }
         });
 
@@ -296,7 +303,7 @@ public class Tomografo extends javax.swing.JFrame {
             }
         });
 
-        adquisicion.setModel(new javax.swing.SpinnerNumberModel(0, 0, 128000, 2));
+        adquisicion.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, 128000.0d, 2.0d));
         adquisicion.setToolTipText("[Samples per channel]");
         adquisicion.addMouseWheelListener(new java.awt.event.MouseWheelListener() {
             public void mouseWheelMoved(java.awt.event.MouseWheelEvent evt) {
@@ -304,7 +311,7 @@ public class Tomografo extends javax.swing.JFrame {
             }
         });
 
-        Fm.setModel(new javax.swing.SpinnerNumberModel(0, 0, 50000, 2));
+        Fm.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, 50000.0d, 2.0d));
         Fm.setToolTipText("[MHz]");
         Fm.setName(""); // NOI18N
 
@@ -446,13 +453,12 @@ public class Tomografo extends javax.swing.JFrame {
                                 .addGap(24, 24, 24)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                     .addGroup(layout.createSequentialGroup()
-                                        .addGap(7, 7, 7)
-                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                            .addComponent(jRadioButton3)
-                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                                .addComponent(jRadioButton2)
-                                                .addComponent(jRadioButton4)
-                                                .addComponent(jRadioButton1))))
+                                        .addGap(9, 9, 9)
+                                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                            .addComponent(jRadioButton2)
+                                            .addComponent(jRadioButton4)
+                                            .addComponent(jRadioButton1)
+                                            .addComponent(jRadioButton3)))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel3)
@@ -461,7 +467,7 @@ public class Tomografo extends javax.swing.JFrame {
                                             .addComponent(jLabel2))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jTextField2)
+                                            .addComponent(FSig)
                                             .addComponent(adquisicion)
                                             .addComponent(Fm)
                                             .addComponent(Amp)))))
@@ -502,20 +508,19 @@ public class Tomografo extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addComponent(jRadioButton4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jRadioButton2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton1)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jRadioButton3)
-                                .addGap(32, 32, 32)
-                                .addComponent(jLabel2))
-                            .addComponent(Amp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(jRadioButton2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jRadioButton1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jRadioButton3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(Amp, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jLabel3)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(FSig, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(8, 8, 8)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel4)
@@ -606,9 +611,9 @@ public class Tomografo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jRadioButton4ActionPerformed
 
-    private void jTextField2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField2ActionPerformed
+    private void FSigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FSigActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField2ActionPerformed
+    }//GEN-LAST:event_FSigActionPerformed
 
     private void jTextField5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField5ActionPerformed
         // TODO add your handling code here:
@@ -651,6 +656,15 @@ public class Tomografo extends javax.swing.JFrame {
 
     private void iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarActionPerformed
 // Se inicia el modo radial
+        LADQ = (Double)adquisicion.getValue();
+        FM = (Double)Fm.getValue();
+        chs.ConfigurationHS(HS, LADQ, FM);
+        
+        AMPLITUDE = (int)Amp.getValue();
+        FSIG = Integer.parseInt(FSig.getText());
+        
+        
+        
         if(radial.isSelected()== true || (radial.isSelected()== false && abanico.isSelected()==false)){
                 prueba.enviaDatos("1");
         }
@@ -718,6 +732,7 @@ public class Tomografo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner Amp;
     private javax.swing.JMenuItem Cargar;
+    private javax.swing.JTextField FSig;
     private javax.swing.JSpinner Fm;
     private javax.swing.JToggleButton abanico;
     private javax.swing.JSpinner adquisicion;
@@ -759,7 +774,6 @@ public class Tomografo extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField2;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
     private javax.swing.JToggleButton radial;
