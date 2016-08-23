@@ -28,7 +28,7 @@ public class ControlHandyScope {
     private double AMPLITUDE;
     private double FSIG;
     
-    private Object[] HANDY;
+    private static Object[] HANDY;
     
     InitHSC ihsc;
     ConfigHSC chsc;
@@ -48,7 +48,8 @@ public class ControlHandyScope {
     private void ConfigurationHS(String lib) {
         try {
             chsc = new ConfigHSC();
-            Object[] ConfigHS = chsc.ConfigHS(lib,40,10);
+            Object[] ConfigHS = chsc.ConfigHS(lib,120000,40000);
+            System.out.println(Arrays.toString(ConfigHS));
         } catch (MWException ex) {
             Logger.getLogger(ControlHandyScope.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -59,7 +60,7 @@ public class ControlHandyScope {
     public void ConfigGenerator(String lib) {
         try {
             config = new ConfigGeneratorHS3C();
-            Object[] Conf = config.ConfigGeneratorHS3(1, lib, 30, 10, 10, 2);
+            Object[] Conf = config.ConfigGeneratorHS3(1, lib, 10, 10, 40000,2);
             System.out.println(Arrays.toString(Conf));
         } catch (MWException ex) {
             Logger.getLogger(ControlHandyScope.class.getName()).log(Level.SEVERE, null, ex);
@@ -70,5 +71,6 @@ public class ControlHandyScope {
         ControlHandyScope chs = new ControlHandyScope();
         chs.ConfigurationHS(HS);
         chs.ConfigGenerator(HS);
+        //System.out.println(Arrays.toString(HANDY));
     }
 }

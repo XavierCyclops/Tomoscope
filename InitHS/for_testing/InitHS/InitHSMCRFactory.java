@@ -1,9 +1,9 @@
 /*
  * MATLAB Compiler: 6.1 (R2015b)
- * Date: Thu Jun 30 12:50:44 2016
+ * Date: Tue Jul 26 15:06:10 2016
  * Arguments: "-B" "macro_default" "-W" "java:InitHS,InitHSC" "-T" "link:lib" "-d" 
  * "G:\\Interfaz\\InitHS\\for_testing" "class{InitHSC:G:\\Interfaz\\InitHS.m}" "-a" 
- * "G:\\Interfaz\\HS3.dll" "-a" "G:\\Interfaz\\HS3_thunk_pcwin64.dll" 
+ * "G:\\Interfaz\\HS3_thunk_pcwin64.dll" 
  */
 
 package InitHS;
@@ -19,7 +19,7 @@ public class InitHSMCRFactory
    
     
     /** Component's uuid */
-    private static final String sComponentId = "InitHS_8360A35B1A7093CD998304A004EE4E2F";
+    private static final String sComponentId = "InitHS_7457990118CC89D5AA61FD4CAA333E8D";
     
     /** Component name */
     private static final String sComponentName = "InitHS";

@@ -1,4 +1,4 @@
-mcc -W 'java:InitHS,InitHSC' -T link:lib -d G:\Interfaz\InitHS\for_testing class{InitHSC:G:\Interfaz\InitHS.m} -a G:\Interfaz\HS3.dll -a G:\Interfaz\HS3_thunk_pcwin64.dll 
+mcc -W 'java:InitHS,InitHSC' -T link:lib -d G:\Interfaz\InitHS\for_testing class{InitHSC:G:\Interfaz\InitHS.m} -a G:\Interfaz\HS3_thunk_pcwin64.dll 
 [Warning: Adding path "G:\Interfaz" to Compiler path instance.] 
 [] 
 Loading source files for package InitHS...
@@ -26,4 +26,4 @@ Creating the bundle...
 Web based installer created at G:\Interfaz\InitHS\for_redistribution\MyAppInstaller_web.exe.
 Packaging complete.
 Failed to copy G:\Interfaz\InitHS\for_testing\doc to G:\Interfaz\InitHS\for_redistribution_files_only\doc.
-Elapsed packaging time was: 1 minutes and 5 seconds.
+Elapsed packaging time was: 1 minutes and 47 seconds.
