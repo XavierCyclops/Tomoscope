@@ -13,7 +13,9 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Xavier
+ * @author Francisco Javier Gonzalez Huerta
+ * @author Javier Juárez Carrillo
+ * UNAM 2016
  */
 public class Acceso extends javax.swing.JFrame {
 

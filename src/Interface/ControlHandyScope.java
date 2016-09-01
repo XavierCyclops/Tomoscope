@@ -14,7 +14,9 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author ACTECK
+ * @author Francisco Javier Gonzalez Huerta
+ * @author Javier Juárez Carrillo
+ * UNAM 2016
  */
 public class ControlHandyScope {
     

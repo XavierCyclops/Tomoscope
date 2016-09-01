@@ -15,7 +15,9 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author Xavier
+ * @author Francisco Javier Gonzalez Huerta
+ * @author Javier Juárez Carrillo
+ * UNAM 2016
  */
 public class Tomografo extends javax.swing.JFrame {
 
@@ -56,7 +58,7 @@ public class Tomografo extends javax.swing.JFrame {
         setResizable(false);
         setTitle("Tomografo-Facultad de Ciencias-GHFJ");
         ((JPanel)getContentPane()).setOpaque(false);
-        ImageIcon ichi = new ImageIcon(this.getClass().getResource("/interface/gray.jpg"));
+        ImageIcon ichi = new ImageIcon(this.getClass().getClassLoader().getResource("Interface/images/gray.jpg"));
         JLabel fond = new JLabel();
         fond.setIcon(ichi);
         getLayeredPane().add(fond,JLayeredPane.FRAME_CONTENT_LAYER);
@@ -80,10 +82,11 @@ public class Tomografo extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jRadioButton4 = new javax.swing.JRadioButton();
-        jRadioButton3 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
-        jRadioButton1 = new javax.swing.JRadioButton();
+        Seniales = new javax.swing.ButtonGroup();
+        radio_sinc = new javax.swing.JRadioButton();
+        radio_square_neg = new javax.swing.JRadioButton();
+        radio_square_pos = new javax.swing.JRadioButton();
+        rad_sin = new javax.swing.JRadioButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -130,39 +133,55 @@ public class Tomografo extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        jRadioButton4.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
-        jRadioButton4.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton4.setText("Funcion Sinc");
-        jRadioButton4.addActionListener(new java.awt.event.ActionListener() {
+        Seniales.add(radio_sinc);
+        radio_sinc.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
+        radio_sinc.setForeground(new java.awt.Color(255, 255, 255));
+        radio_sinc.setText("Funcion Sinc");
+        radio_sinc.setFocusable(false);
+        radio_sinc.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        radio_sinc.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        radio_sinc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton4ActionPerformed(evt);
+                radio_sincActionPerformed(evt);
             }
         });
 
-        jRadioButton3.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
-        jRadioButton3.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton3.setText("Pulso Cuadrado Negativo");
-        jRadioButton3.addActionListener(new java.awt.event.ActionListener() {
+        Seniales.add(radio_square_neg);
+        radio_square_neg.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
+        radio_square_neg.setForeground(new java.awt.Color(255, 255, 255));
+        radio_square_neg.setText("Pulso Cuadrado Negativo");
+        radio_square_neg.setFocusable(false);
+        radio_square_neg.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        radio_square_neg.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        radio_square_neg.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton3ActionPerformed(evt);
+                radio_square_negActionPerformed(evt);
             }
         });
 
-        jRadioButton2.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
-        jRadioButton2.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton2.setText("Pulso Cuadrado Positivo");
-        jRadioButton2.addActionListener(new java.awt.event.ActionListener() {
+        Seniales.add(radio_square_pos);
+        radio_square_pos.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
+        radio_square_pos.setForeground(new java.awt.Color(255, 255, 255));
+        radio_square_pos.setText("Pulso Cuadrado Positivo");
+        radio_square_pos.setFocusable(false);
+        radio_square_pos.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        radio_square_pos.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        radio_square_pos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton2ActionPerformed(evt);
+                radio_square_posActionPerformed(evt);
             }
         });
 
-        jRadioButton1.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
-        jRadioButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jRadioButton1.setText("Pulso Senoidal Modulado");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        Seniales.add(rad_sin);
+        rad_sin.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
+        rad_sin.setForeground(new java.awt.Color(255, 255, 255));
+        rad_sin.setText("Pulso Senoidal Modulado");
+        rad_sin.setFocusable(false);
+        rad_sin.setHorizontalTextPosition(javax.swing.SwingConstants.RIGHT);
+        rad_sin.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        rad_sin.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                rad_sinActionPerformed(evt);
             }
         });
 
@@ -455,10 +474,11 @@ public class Tomografo extends javax.swing.JFrame {
                                     .addGroup(layout.createSequentialGroup()
                                         .addGap(9, 9, 9)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jRadioButton2)
-                                            .addComponent(jRadioButton4)
-                                            .addComponent(jRadioButton1)
-                                            .addComponent(jRadioButton3)))
+                                            .addComponent(rad_sin)
+                                            .addComponent(radio_square_neg)
+                                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                                .addComponent(radio_sinc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                                .addComponent(radio_square_pos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                                     .addGroup(layout.createSequentialGroup()
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel3)
@@ -501,18 +521,18 @@ public class Tomografo extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(53, 53, 53)
                         .addComponent(jLabel1)
-                        .addGap(18, 18, 18)
-                        .addComponent(jRadioButton4)
+                        .addGap(36, 36, 36)
+                        .addComponent(radio_sinc)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton2)
+                        .addComponent(radio_square_pos)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton1)
+                        .addComponent(rad_sin)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jRadioButton3)
+                        .addComponent(radio_square_neg)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 29, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
@@ -541,7 +561,7 @@ public class Tomografo extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
-                        .addGap(18, 25, Short.MAX_VALUE)
+                        .addGap(18, 45, Short.MAX_VALUE)
                         .addComponent(radial))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -595,22 +615,6 @@ public class Tomografo extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jMenuItem15ActionPerformed
 
-    private void jRadioButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton3ActionPerformed
-
-    private void jRadioButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton2ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton2ActionPerformed
-
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
-
-    private void jRadioButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton4ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton4ActionPerformed
-
     private void FSigActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_FSigActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_FSigActionPerformed
@@ -656,14 +660,33 @@ public class Tomografo extends javax.swing.JFrame {
 
     private void iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarActionPerformed
 // Se inicia el modo radial
-        LADQ = (Double)adquisicion.getValue();
+        LADQ = (Double)adquisicion.getValue(); // Samples
         FM = (Double)Fm.getValue();
         chs.ConfigurationHS(HS, LADQ, FM);
         
         AMPLITUDE = (int)Amp.getValue();
         FSIG = Integer.parseInt(FSig.getText());
         
+        boolean sinc = radio_sinc.isSelected();
+        boolean pulso_cp = radio_square_pos.isSelected();
+        boolean senoidal = rad_sin.isSelected();
+        boolean pulso_cn = radio_square_neg.isSelected();
         
+        byte opcion_senial = 0;
+        
+        if (sinc) {
+            opcion_senial = 4;
+        } else if (pulso_cp) {
+            opcion_senial = 2;
+        } else if (senoidal) {
+            opcion_senial = 1;
+        } else if(pulso_cn){
+            opcion_senial = 3;
+        } else {
+            opcion_senial = 2;
+        }
+        
+        chs.ConfigGenerator(HS, AMPLITUDE, FSIG, FM, opcion_senial);
         
         if(radial.isSelected()== true || (radial.isSelected()== false && abanico.isSelected()==false)){
                 prueba.enviaDatos("1");
@@ -696,6 +719,22 @@ public class Tomografo extends javax.swing.JFrame {
     private void adquisicionMouseWheelMoved(java.awt.event.MouseWheelEvent evt) {//GEN-FIRST:event_adquisicionMouseWheelMoved
         // TODO add your handling code here:
     }//GEN-LAST:event_adquisicionMouseWheelMoved
+
+    private void radio_sincActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_sincActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radio_sincActionPerformed
+
+    private void radio_square_posActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_square_posActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radio_square_posActionPerformed
+
+    private void rad_sinActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rad_sinActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_rad_sinActionPerformed
+
+    private void radio_square_negActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radio_square_negActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_radio_square_negActionPerformed
 
     /**
      * @param args the command line arguments
@@ -734,6 +773,7 @@ public class Tomografo extends javax.swing.JFrame {
     private javax.swing.JMenuItem Cargar;
     private javax.swing.JTextField FSig;
     private javax.swing.JSpinner Fm;
+    private javax.swing.ButtonGroup Seniales;
     private javax.swing.JToggleButton abanico;
     private javax.swing.JSpinner adquisicion;
     private javax.swing.JProgressBar coneccion;
@@ -767,15 +807,15 @@ public class Tomografo extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
-    private javax.swing.JRadioButton jRadioButton3;
-    private javax.swing.JRadioButton jRadioButton4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField5;
     private javax.swing.JTextField jTextField6;
+    private javax.swing.JRadioButton rad_sin;
     private javax.swing.JToggleButton radial;
+    private javax.swing.JRadioButton radio_sinc;
+    private javax.swing.JRadioButton radio_square_neg;
+    private javax.swing.JRadioButton radio_square_pos;
     // End of variables declaration//GEN-END:variables
 }

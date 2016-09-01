@@ -12,7 +12,9 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author ACTECK
+ * @author Francisco Javier Gonzalez Huerta
+ * @author Javier Juárez Carrillo
+ * UNAM 2016
  */
 public class Charge extends javax.swing.JFrame {
 

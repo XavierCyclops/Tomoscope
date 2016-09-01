@@ -12,7 +12,9 @@ import javax.swing.JPanel;
 
 /**
  *
- * @author TomografoV2
+ * @author Francisco Javier Gonzalez Huerta
+ * @author Javier Juárez Carrillo
+ * UNAM 2016
  */
 public class baseDatos extends javax.swing.JFrame {
 

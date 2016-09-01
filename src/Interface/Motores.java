@@ -13,7 +13,9 @@ import javax.swing.JOptionPane;
 
 /**
  *
- * @author TomografoV2
+ * @author Francisco Javier Gonzalez Huerta
+ * @author Javier Juárez Carrillo
+ * UNAM 2016
  */
 public class Motores {
     //Inicializamos los casos posibles de arduino.
