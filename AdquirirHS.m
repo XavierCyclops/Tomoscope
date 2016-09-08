@@ -1,4 +1,10 @@
-function [dat1,dat2] = AdquirirHS(sDLL,pData1,pData2)
+function [dat1,dat2] = AdquirirHS(sDLL, Samples)
+
+  data1  = double(1:Samples);  
+  data2  = double(1:Samples );
+  pData1 = libpointer( 'doublePtr' , data1 );
+  pData2 = libpointer( 'doublePtr' , data2 ); 
+  
   Estado = calllib(sDLL,'ADC_Start');
     while ~calllib(sDLL,'ADC_Ready')      
       pause(0.03); %Esta pausa es necesaria para refrescar el acceso a librerias

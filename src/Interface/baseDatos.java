@@ -26,7 +26,7 @@ public class baseDatos extends javax.swing.JFrame {
          setTitle("Guardar Señales");
          setResizable(false);
         ((JPanel)getContentPane()).setOpaque(false);
-        ImageIcon ichi = new ImageIcon(this.getClass().getResource("/interface/GGray.png"));
+        ImageIcon ichi = new ImageIcon(this.getClass().getClassLoader().getResource("Interface/images/GGray.png"));
         JLabel fond = new JLabel();
         fond.setIcon(ichi);
         getLayeredPane().add(fond,JLayeredPane.FRAME_CONTENT_LAYER);
