@@ -1,0 +1,3 @@
+When using the DLL for the Handyscope HS3, Handyscope HS4 or Handyscope HS4 DIFF,
+please make sure to place the .HEX files in the same directory on your computer as the DLL.
+
