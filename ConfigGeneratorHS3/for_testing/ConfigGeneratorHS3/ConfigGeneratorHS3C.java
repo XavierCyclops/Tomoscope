@@ -1,9 +1,18 @@
 /*
  * MATLAB Compiler: 6.1 (R2015b)
- * Date: Thu Jun 30 15:38:17 2016
+ * Date: Wed Jan 25 15:14:23 2017
  * Arguments: "-B" "macro_default" "-W" "java:ConfigGeneratorHS3,ConfigGeneratorHS3C" 
- * "-T" "link:lib" "-d" "G:\\Interfaz\\ConfigGeneratorHS3\\for_testing" 
- * "class{ConfigGeneratorHS3C:G:\\Interfaz\\ConfigGeneratorHS3.m}" 
+ * "-T" "link:lib" "-d" 
+ * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\ConfigGeneratorHS3\\for_testing" 
+ * "class{ConfigGeneratorHS3C:C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigGeneratorHS3.m}" 
+ * "-a" "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\pulsocuad.m" 
+ * "-a" "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\pulsocuadn.m" 
+ * "-a" "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\pulsosin.m" "-a" 
+ * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\pulsosinc.m" "-a" 
+ * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\pulsoUTcuad.m" "-a" 
+ * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\pulsoUTcuadn.m" "-a" 
+ * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\pulsoUTsin.m" "-a" 
+ * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\pulsoUTsinc.m" 
  */
 
 package ConfigGeneratorHS3;
@@ -16,7 +25,7 @@ import java.util.*;
  * The <code>ConfigGeneratorHS3C</code> class provides a Java interface to the M-functions
  * from the files:
  * <pre>
- *  G:\\Interfaz\\ConfigGeneratorHS3.m
+ *  C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigGeneratorHS3.m
  * </pre>
  * The {@link #dispose} method <b>must</b> be called on a 
  * <code>ConfigGeneratorHS3C</code> instance when it is no longer needed to ensure that 

@@ -31,7 +31,7 @@ public class Motores {
     //Inicializamos el flujo y variables de conexion
     private OutputStream output = null;
     SerialPort puertoSerial;
-    private final String PUERTO = "COM5";
+    private final String PUERTO = "COM3";
     //Tiempo de espera de conexion
     public static final int TimeW = 2000; //mls
     //serial

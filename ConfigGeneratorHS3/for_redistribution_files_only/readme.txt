@@ -15,7 +15,7 @@ MATLAB Java Package Read Me
 
   (2) run the MATLAB Runtime Installer.
 
-Or download the Windows 64-bit version of the MATLAB Runtime for R2015b 
+Or download the Windows 32-bit version of the MATLAB Runtime for R2015b 
 from the MathWorks Web site by navigating to
 
    http://www.mathworks.com/products/compiler/mcr/index.html
@@ -33,7 +33,7 @@ in the MathWorks Documentation Center.
 . javabuilder.jar must be included in your CLASSPATH. javabuilder.jar 
   can be found in: 
   
-  <mcr_root>*\toolbox\javabuilder\jar\win64\javabuilder.jar
+  <mcr_root>*\toolbox\javabuilder\jar\win32\javabuilder.jar
   
 
 NOTE: You will need administrator rights to run MCRInstaller. 

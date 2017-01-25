@@ -1,9 +1,18 @@
 /*
  * MATLAB Compiler: 6.1 (R2015b)
- * Date: Thu Jun 30 15:38:17 2016
+ * Date: Wed Jan 25 15:14:24 2017
  * Arguments: "-B" "macro_default" "-W" "java:ConfigGeneratorHS3,ConfigGeneratorHS3C" 
- * "-T" "link:lib" "-d" "G:\\Interfaz\\ConfigGeneratorHS3\\for_testing" 
- * "class{ConfigGeneratorHS3C:G:\\Interfaz\\ConfigGeneratorHS3.m}" 
+ * "-T" "link:lib" "-d" 
+ * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\ConfigGeneratorHS3\\for_testing" 
+ * "class{ConfigGeneratorHS3C:C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigGeneratorHS3.m}" 
+ * "-a" "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\pulsocuad.m" 
+ * "-a" "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\pulsocuadn.m" 
+ * "-a" "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\pulsosin.m" "-a" 
+ * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\pulsosinc.m" "-a" 
+ * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\pulsoUTcuad.m" "-a" 
+ * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\pulsoUTcuadn.m" "-a" 
+ * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\pulsoUTsin.m" "-a" 
+ * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\pulsoUTsinc.m" 
  */
 
 package ConfigGeneratorHS3;
@@ -19,7 +28,7 @@ public class ConfigGeneratorHS3MCRFactory
    
     
     /** Component's uuid */
-    private static final String sComponentId = "ConfigGenera_07976FDA344FE361DCB1EAD5A91C5264";
+    private static final String sComponentId = "ConfigGenera_ADF0665BC59EC264F0054BB65AD42BED";
     
     /** Component name */
     private static final String sComponentName = "ConfigGeneratorHS3";
