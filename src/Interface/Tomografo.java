@@ -7,71 +7,77 @@ package Interface;
 
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
+// Adquisiciones del HandyScope HS3 56 22 66 90 ext 108 roberto herrera
+import AdquirirHS.*;
+import Abrir_flujo.*;
+import Cerrar_flujo.*;
+import GetTriggerOn.*;
+import GetTriggerOff.*;
 
 /**
  *
  * @author Francisco Javier Gonzalez Huerta
- * @author Javier Juárez Carrillo
- * UNAM 2016
+ * @author Javier Juárez Carrillo UNAM 2016
  */
 public class Tomografo extends javax.swing.JFrame {
 
     //Enciende y conecta motores
-    Motores prueba = new Motores(); 
+    Motores prueba = new Motores();
     //Arduino ardi = new Arduino();
     //double temp;
-    
+
     // Usuario
     private int AMPLITUDE;    // 0 <= AMPLITUDE <= 12
     private double FSIG;      // Número de disparos
     private double FM;        // Frecuencia de muestra; 0 <= FM <= 50000
     private double LADQ;      // Tamanio Adquisicion; 0 <= LADQ <= 120000
-    
+
     /*
-    Se crea un nuevo objeto ControlHandyScope que contiene las configuraciones
-    del HS3
-    */
+     Se crea un nuevo objeto ControlHandyScope que contiene las configuraciones
+     del HS3
+     */
     private String HS = "HS3";
     ControlHandyScope chs = new ControlHandyScope();
-    
-   /* SerialPortEventListener sp = new SerialPortEventListener(){
-    public void serialEvent(SerialPortEvent arg0){
-    try{
-           if(ardi.MessageAvaliable() == true){
-            String a = ardi.PrintMessage();
-            temp = Double.parseDouble((a));
-            System.out.println(temp);
-            } 
-            }catch(Exception e){
-            e.printStackTrace();
-            }    
-    }
-};
-    */
+
+    /* SerialPortEventListener sp = new SerialPortEventListener(){
+     public void serialEvent(SerialPortEvent arg0){
+     try{
+     if(ardi.MessageAvaliable() == true){
+     String a = ardi.PrintMessage();
+     temp = Double.parseDouble((a));
+     System.out.println(temp);
+     } 
+     }catch(Exception e){
+     e.printStackTrace();
+     }    
+     }
+     };
+     */
     public Tomografo() {
         initComponents();
         setResizable(false);
         setTitle("Tomografo-Facultad de Ciencias-GHFJ");
-        ((JPanel)getContentPane()).setOpaque(false);
+        ((JPanel) getContentPane()).setOpaque(false);
         ImageIcon ichi = new ImageIcon(this.getClass().getClassLoader().getResource("Interface/images/gray.jpg"));
         JLabel fond = new JLabel();
         fond.setIcon(ichi);
-        getLayeredPane().add(fond,JLayeredPane.FRAME_CONTENT_LAYER);
-        fond.setBounds(0,0,ichi.getIconWidth(),ichi.getIconHeight());
+        getLayeredPane().add(fond, JLayeredPane.FRAME_CONTENT_LAYER);
+        fond.setBounds(0, 0, ichi.getIconWidth(), ichi.getIconHeight());
         coneccion.setValue(50);
 
-      /*  try{
-            ardi.ArduinoRXTX("COM3",2000,9600,sp);
-        }catch(Exception e1){
-            e1.printStackTrace();
-        }*/
+        /*  try{
+         ardi.ArduinoRXTX("COM3",2000,9600,sp);
+         }catch(Exception e1){
+         e1.printStackTrace();
+         }*/
     }
-
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -634,20 +640,20 @@ public class Tomografo extends javax.swing.JFrame {
 
     private void radialActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radialActionPerformed
         // Aqui acomodamos el motor para radial
-        if(true == radial.isSelected()){
-        radial.setOpaque(true);
-        abanico.setSelected(false);
+        if (true == radial.isSelected()) {
+            radial.setOpaque(true);
+            abanico.setSelected(false);
             coneccion.setValue(100);
             prueba.enviaDatos("3");
 
-      } 
+        }
     }//GEN-LAST:event_radialActionPerformed
 
     private void abanicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_abanicoActionPerformed
         // Y aqui para abanico
-        if(abanico.isSelected()== true){
+        if (abanico.isSelected() == true) {
             abanico.setOpaque(true);
-            radial.setSelected(false);           
+            radial.setSelected(false);
             coneccion.setValue(100);
             prueba.enviaDatos("3");
 
@@ -655,45 +661,65 @@ public class Tomografo extends javax.swing.JFrame {
     }//GEN-LAST:event_abanicoActionPerformed
 
     private void coneccionAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_coneccionAncestorAdded
-      // TODO add your handling code here:
+        // TODO add your handling code here:
     }//GEN-LAST:event_coneccionAncestorAdded
 
     private void iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarActionPerformed
 // Se inicia el modo radial
-        LADQ = (Double)adquisicion.getValue(); // Samples
-        FM = (Double)Fm.getValue();
+        LADQ = (Double) adquisicion.getValue(); // Samples
+        FM = (Double) Fm.getValue();
         chs.ConfigurationHS(HS, LADQ, FM);
-        
-        AMPLITUDE = (int)Amp.getValue();
+
+        AMPLITUDE = (int) Amp.getValue();
         FSIG = Integer.parseInt(FSig.getText());
-        
+
         boolean sinc = radio_sinc.isSelected();
         boolean pulso_cp = radio_square_pos.isSelected();
         boolean senoidal = rad_sin.isSelected();
         boolean pulso_cn = radio_square_neg.isSelected();
-        
+
         byte opcion_senial = 0;
-        
+
         if (sinc) {
             opcion_senial = 4;
         } else if (pulso_cp) {
             opcion_senial = 2;
         } else if (senoidal) {
             opcion_senial = 1;
-        } else if(pulso_cn){
+        } else if (pulso_cn) {
             opcion_senial = 3;
         } else {
             opcion_senial = 2;
         }
-        
+
         chs.ConfigGenerator(HS, AMPLITUDE, FSIG, FM, opcion_senial);
-        
-        if(radial.isSelected()== true || (radial.isSelected()== false && abanico.isSelected()==false)){
-                prueba.enviaDatos("1");
+
+        if (radial.isSelected() == true || (radial.isSelected() == false && abanico.isSelected() == false)) {
+            try {
+                for (int j = 0; j < 100; j++) {
+                    prueba.enviaDatos("1");
+                    prueba.enviaDatos("2");
+                    Thread.sleep(4000);
+                }
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
+                Thread.currentThread().interrupt();
+            }
         }
 // Se inicia el modo abanico 
-        if(abanico.isSelected()==true){
-               prueba.enviaDatos("2");
+        if (abanico.isSelected() == true) {
+            try {
+                for (int j = 0; j < 100; j++) {
+                    prueba.enviaDatos("2");
+                    for (int k = 0; k <= 100; k++) {
+                        prueba.enviaDatos("1");
+                        Thread.sleep(3000);
+                    }
+                }
+            } catch (InterruptedException ex) {
+                Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
+                Thread.currentThread().interrupt();
+            }
 
         }
     }//GEN-LAST:event_iniciarActionPerformed
@@ -756,7 +782,7 @@ public class Tomografo extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(Tomografo.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        
+
         //</editor-fold>
 
         /* Create and display the form */

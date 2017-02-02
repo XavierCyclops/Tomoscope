@@ -7,9 +7,6 @@ package Interface;
 import InitHS.*;
 import ConfigHS.*;
 import ConfigGeneratorHS3.*;
-import AdquirirHS.*;
-import Abrir_flujo.*;
-import Cerrar_flujo.*;
 import com.mathworks.toolbox.javabuilder.*;  // MATLAB Java Builder
 import java.util.Arrays;
 import java.util.logging.Level;
