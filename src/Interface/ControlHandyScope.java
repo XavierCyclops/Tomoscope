@@ -52,7 +52,7 @@ public class ControlHandyScope {
         try {
             chsc = new ConfigHSC();
             Object[] ConfigHS = chsc.ConfigHS(lib,Samples,Fm);
-            System.out.println(Arrays.toString(ConfigHS));
+            //System.out.println(Arrays.toString(ConfigHS));
         } catch (MWException ex) {
             Logger.getLogger(ControlHandyScope.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -64,7 +64,7 @@ public class ControlHandyScope {
         try {
             config = new ConfigGeneratorHS3C();
             Object[] Conf = config.ConfigGeneratorHS3(1, lib, amplitude, fsig, fm, opc);
-            System.out.println(Arrays.toString(Conf));
+            //System.out.println(Arrays.toString(Conf));
         } catch (MWException ex) {
             Logger.getLogger(ControlHandyScope.class.getName()).log(Level.SEVERE, null, ex);
         }

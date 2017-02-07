@@ -20,6 +20,8 @@ import Abrir_flujo.*;
 import Cerrar_flujo.*;
 import GetTriggerOn.*;
 import GetTriggerOff.*;
+import com.mathworks.toolbox.javabuilder.MWException;
+import java.util.Arrays;
 
 /**
  *
@@ -35,9 +37,12 @@ public class Tomografo extends javax.swing.JFrame {
 
     // Usuario
     private int AMPLITUDE;    // 0 <= AMPLITUDE <= 12
-    private double FSIG;      // Número de disparos
+    private double FSIG;      // Frecuencia de señal
     private double FM;        // Frecuencia de muestra; 0 <= FM <= 50000
     private double LADQ;      // Tamanio Adquisicion; 0 <= LADQ <= 120000
+    private double NMEAN;     // Número de disparos 
+    
+    private Object[] ADQUISICION;
 
     /*
      Se crea un nuevo objeto ControlHandyScope que contiene las configuraciones
@@ -45,6 +50,12 @@ public class Tomografo extends javax.swing.JFrame {
      */
     private String HS = "HS3";
     ControlHandyScope chs = new ControlHandyScope();
+    
+    AdquirirHSC ahs;
+    Abrir_flujoC afc;
+    Cerrar_flujoC cfc;
+    GetTriggerOnC gto;
+    GetTriggerOffC gtf;
 
     /* SerialPortEventListener sp = new SerialPortEventListener(){
      public void serialEvent(SerialPortEvent arg0){
@@ -116,6 +127,8 @@ public class Tomografo extends javax.swing.JFrame {
         adquisicion = new javax.swing.JSpinner();
         Fm = new javax.swing.JSpinner();
         Amp = new javax.swing.JSpinner();
+        jLabel8 = new javax.swing.JLabel();
+        Disparos = new javax.swing.JTextField();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu7 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -343,6 +356,10 @@ public class Tomografo extends javax.swing.JFrame {
         Amp.setModel(new javax.swing.SpinnerNumberModel(0, 0, 12, 1));
         Amp.setToolTipText("[V]");
 
+        jLabel8.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
+        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel8.setText("Número de Disparos");
+
         jMenu7.setText("Archivo");
 
         jMenuItem5.setText("Abrir Proyecto");
@@ -490,13 +507,15 @@ public class Tomografo extends javax.swing.JFrame {
                                             .addComponent(jLabel3)
                                             .addComponent(jLabel4)
                                             .addComponent(jLabel5)
-                                            .addComponent(jLabel2))
+                                            .addComponent(jLabel2)
+                                            .addComponent(jLabel8))
                                         .addGap(18, 18, 18)
                                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                             .addComponent(FSig)
                                             .addComponent(adquisicion)
                                             .addComponent(Fm)
-                                            .addComponent(Amp)))))
+                                            .addComponent(Amp)
+                                            .addComponent(Disparos)))))
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(160, 160, 160)
                                 .addComponent(jLabel6))
@@ -555,7 +574,11 @@ public class Tomografo extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel5)
                             .addComponent(adquisicion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(49, 49, 49)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel8)
+                            .addComponent(Disparos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(19, 19, 19)
                         .addComponent(jLabel6)
                         .addGap(18, 18, 18)
                         .addComponent(coneccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -567,7 +590,7 @@ public class Tomografo extends javax.swing.JFrame {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jTextField5, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jLabel7))
-                        .addGap(18, 45, Short.MAX_VALUE)
+                        .addGap(18, 44, Short.MAX_VALUE)
                         .addComponent(radial))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
@@ -672,6 +695,7 @@ public class Tomografo extends javax.swing.JFrame {
 
         AMPLITUDE = (int) Amp.getValue();
         FSIG = Integer.parseInt(FSig.getText());
+        NMEAN = Integer.parseInt(Disparos.getText());
 
         boolean sinc = radio_sinc.isSelected();
         boolean pulso_cp = radio_square_pos.isSelected();
@@ -693,10 +717,27 @@ public class Tomografo extends javax.swing.JFrame {
         }
 
         chs.ConfigGenerator(HS, AMPLITUDE, FSIG, FM, opcion_senial);
-
+        try {
+            ahs = new AdquirirHSC();
+            afc = new Abrir_flujoC();
+            cfc = new Cerrar_flujoC();
+            gto = new GetTriggerOnC();
+            gtf = new GetTriggerOffC();
+        } catch (MWException ex) {
+            Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
         if (radial.isSelected() == true || (radial.isSelected() == false && abanico.isSelected() == false)) {
             try {
                 for (int j = 0; j < 100; j++) {
+                    for (int i = 0; i < NMEAN; i++) {
+                        afc.Abrir_flujo(HS);
+                        gto.GetTriggerOn(HS);
+                        ADQUISICION = ahs.AdquirirHS(2, HS, LADQ);
+                        gtf.GetTriggerOff(HS);
+                        cfc.Cerrar_flujo(HS);
+                        System.out.println(Arrays.toString(ADQUISICION));
+                    }
                     prueba.enviaDatos("1");
                     prueba.enviaDatos("2");
                     Thread.sleep(4000);
@@ -704,6 +745,8 @@ public class Tomografo extends javax.swing.JFrame {
             } catch (InterruptedException ex) {
                 Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
                 Thread.currentThread().interrupt();
+            } catch (MWException ex) {
+                Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
 // Se inicia el modo abanico 
@@ -712,6 +755,14 @@ public class Tomografo extends javax.swing.JFrame {
                 for (int j = 0; j < 100; j++) {
                     prueba.enviaDatos("2");
                     for (int k = 0; k <= 100; k++) {
+                        for (int i = 0; i < NMEAN; i++) {
+                            afc.Abrir_flujo(HS);
+                            gto.GetTriggerOn(HS);
+                            ADQUISICION = ahs.AdquirirHS(2, HS, LADQ);
+                            gtf.GetTriggerOff(HS);
+                            cfc.Cerrar_flujo(HS);
+                            System.out.println(Arrays.toString(ADQUISICION));
+                        }
                         prueba.enviaDatos("1");
                         Thread.sleep(3000);
                     }
@@ -719,6 +770,8 @@ public class Tomografo extends javax.swing.JFrame {
             } catch (InterruptedException ex) {
                 Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
                 Thread.currentThread().interrupt();
+            } catch (MWException ex) {
+                Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }
@@ -797,6 +850,7 @@ public class Tomografo extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JSpinner Amp;
     private javax.swing.JMenuItem Cargar;
+    private javax.swing.JTextField Disparos;
     private javax.swing.JTextField FSig;
     private javax.swing.JSpinner Fm;
     private javax.swing.ButtonGroup Seniales;
@@ -815,6 +869,7 @@ public class Tomografo extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu5;
