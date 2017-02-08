@@ -218,6 +218,8 @@ void loop() {
   //Coneccion a JAVA
   Op = Serial.read();
 
+
+      
   switch (Op) {
 
     case '1':

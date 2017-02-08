@@ -39,10 +39,10 @@ public class Tomografo extends javax.swing.JFrame {
     private int AMPLITUDE;    // 0 <= AMPLITUDE <= 12
     private double FSIG;      // Frecuencia de señal
     private double FM;        // Frecuencia de muestra; 0 <= FM <= 50000
-    private double LADQ;      // Tamanio Adquisicion; 0 <= LADQ <= 120000
+    private double LADQ;      // Tamaño Adquisicion; 0 <= LADQ <= 120000
     private double NMEAN;     // Número de disparos 
     
-    private Object[] ADQUISICION;
+    private Object[] ADQUISICION; // Adquisición de la señal
 
     /*
      Se crea un nuevo objeto ControlHandyScope que contiene las configuraciones
@@ -733,6 +733,7 @@ public class Tomografo extends javax.swing.JFrame {
                     for (int i = 0; i < NMEAN; i++) {
                         afc.Abrir_flujo(HS);
                         gto.GetTriggerOn(HS);
+                        // Empieza adquisición de señales
                         ADQUISICION = ahs.AdquirirHS(2, HS, LADQ);
                         gtf.GetTriggerOff(HS);
                         cfc.Cerrar_flujo(HS);
@@ -756,15 +757,17 @@ public class Tomografo extends javax.swing.JFrame {
                     prueba.enviaDatos("2");
                     for (int k = 0; k <= 100; k++) {
                         for (int i = 0; i < NMEAN; i++) {
+                            Thread.sleep(2000);
                             afc.Abrir_flujo(HS);
                             gto.GetTriggerOn(HS);
-                            ADQUISICION = ahs.AdquirirHS(2, HS, LADQ);
+                            ADQUISICION[i] = ahs.AdquirirHS(2, HS, LADQ);
                             gtf.GetTriggerOff(HS);
                             cfc.Cerrar_flujo(HS);
-                            System.out.println(Arrays.toString(ADQUISICION));
+                            //System.out.println(Arrays.toString(ADQUISICION));
+                            System.out.println(ADQUISICION[i]);
                         }
                         prueba.enviaDatos("1");
-                        Thread.sleep(3000);
+                       // Thread.sleep(3000);
                     }
                 }
             } catch (InterruptedException ex) {

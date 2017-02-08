@@ -20,7 +20,7 @@ import java.util.logging.Logger;
  */
 public class ControlHandyScope {
     
-    private static String HS = "HS3";
+    private static final String HS = "HS3";
     
     // Configuración del generador
     private int SIGNAL = 5;
