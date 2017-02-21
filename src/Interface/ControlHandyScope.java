@@ -8,7 +8,6 @@ import InitHS.*;
 import ConfigHS.*;
 import ConfigGeneratorHS3.*;
 import com.mathworks.toolbox.javabuilder.*;  // MATLAB Java Builder
-import java.util.Arrays;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 

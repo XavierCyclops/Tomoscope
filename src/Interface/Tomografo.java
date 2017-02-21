@@ -40,7 +40,7 @@ public class Tomografo extends javax.swing.JFrame {
     private double FSIG;      // Frecuencia de señal
     private double FM;        // Frecuencia de muestra; 0 <= FM <= 50000
     private double LADQ;      // Tamaño Adquisicion; 0 <= LADQ <= 120000
-    private double NMEAN;     // Número de disparos 
+    private int NMEAN;        // Número de disparos 
     
     private Object[] ADQUISICION; // Adquisición de la señal
 
@@ -729,20 +729,22 @@ public class Tomografo extends javax.swing.JFrame {
         
         if (radial.isSelected() == true || (radial.isSelected() == false && abanico.isSelected() == false)) {
             try {
+                ADQUISICION = new Object[NMEAN * 100];
                 for (int j = 0; j < 100; j++) {
                     for (int i = 0; i < NMEAN; i++) {
+                        Thread.sleep(2000);
                         afc.Abrir_flujo(HS);
                         gto.GetTriggerOn(HS);
                         // Empieza adquisición de señales
-                        ADQUISICION = ahs.AdquirirHS(2, HS, LADQ);
+                        ADQUISICION[j] = Arrays.toString(ahs.AdquirirHS(2, HS, LADQ));
                         gtf.GetTriggerOff(HS);
                         cfc.Cerrar_flujo(HS);
-                        System.out.println(Arrays.toString(ADQUISICION));
+                        //System.out.println(Arrays.toString(ADQUISICION));
                     }
                     prueba.enviaDatos("1");
                     prueba.enviaDatos("2");
-                    Thread.sleep(4000);
                 }
+                System.out.println(Arrays.toString(ADQUISICION));
             } catch (InterruptedException ex) {
                 Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
                 Thread.currentThread().interrupt();
