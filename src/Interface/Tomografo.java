@@ -21,6 +21,12 @@ import Cerrar_flujo.*;
 import GetTriggerOn.*;
 import GetTriggerOff.*;
 import com.mathworks.toolbox.javabuilder.MWException;
+import com.jmatio.io.MatFileWriter;
+import com.jmatio.types.MLDouble;
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.util.ArrayList;
 import java.util.Arrays;
 
 /**
@@ -736,7 +742,7 @@ public class Tomografo extends javax.swing.JFrame {
                         afc.Abrir_flujo(HS);
                         gto.GetTriggerOn(HS);
                         // Empieza adquisición de señales
-                        ADQUISICION[j] = Arrays.toString(ahs.AdquirirHS(2, HS, LADQ));
+                        ADQUISICION[j] = ahs.AdquirirHS(2, HS, LADQ);
                         gtf.GetTriggerOff(HS);
                         cfc.Cerrar_flujo(HS);
                         //System.out.println(Arrays.toString(ADQUISICION));
@@ -744,7 +750,19 @@ public class Tomografo extends javax.swing.JFrame {
                     prueba.enviaDatos("1");
                     prueba.enviaDatos("2");
                 }
-                System.out.println(Arrays.toString(ADQUISICION));
+                //System.out.println(Arrays.toString(ADQUISICION));
+                Double[] ADQFILE = new Double[ADQUISICION.length];
+                for(int i = 0; i < ADQUISICION.length; i++) {
+                    double tmp;
+                    tmp = (double) ADQUISICION[i];
+                    ADQFILE[i] = tmp;
+                }
+                System.out.println(Arrays.toString(ADQFILE));
+                /*MLDouble ml;
+                ml = new MLDouble("arreglo_prueba", ADQFILE, 100);
+                ArrayList lista = new ArrayList();
+                lista.add(ml);
+                new MatFileWriter("prueba.mat", lista);*/
             } catch (InterruptedException ex) {
                 Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
                 Thread.currentThread().interrupt();
