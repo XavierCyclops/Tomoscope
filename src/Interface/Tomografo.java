@@ -23,7 +23,11 @@ import GetTriggerOff.*;
 import com.mathworks.toolbox.javabuilder.MWException;
 import com.jmatio.io.MatFileWriter;
 import com.jmatio.types.MLDouble;
+import com.mathworks.toolbox.javabuilder.MWClassID;
+import com.mathworks.toolbox.javabuilder.MWComplexity;
+import com.mathworks.toolbox.javabuilder.MWNumericArray;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -43,12 +47,12 @@ public class Tomografo extends javax.swing.JFrame {
 
     // Usuario
     private int AMPLITUDE;    // 0 <= AMPLITUDE <= 12
-    private double FSIG;      // Frecuencia de señal
-    private double FM;        // Frecuencia de muestra; 0 <= FM <= 50000
-    private double LADQ;      // Tamaño Adquisicion; 0 <= LADQ <= 120000
+    private double FSIG;      // Frecuencia de señal -- 500000
+    private double FM;        // Frecuencia de muestra; 0 <= FM <= 50000 -- 50000000
+    private double LADQ;      // Tamaño Adquisicion; 0 <= LADQ <= 120000 -- 20000 ~ 30000
     private int NMEAN;        // Número de disparos 
-    
-    private Object[] ADQUISICION; // Adquisición de la señal
+
+    private double[][] ADQUISICION; // Adquisición de la señal
 
     /*
      Se crea un nuevo objeto ControlHandyScope que contiene las configuraciones
@@ -56,7 +60,7 @@ public class Tomografo extends javax.swing.JFrame {
      */
     private String HS = "HS3";
     ControlHandyScope chs = new ControlHandyScope();
-    
+
     AdquirirHSC ahs;
     Abrir_flujoC afc;
     Cerrar_flujoC cfc;
@@ -355,8 +359,9 @@ public class Tomografo extends javax.swing.JFrame {
             }
         });
 
-        Fm.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, 50000.0d, 2.0d));
+        Fm.setModel(new javax.swing.SpinnerNumberModel(0.0d, 0.0d, 5.0E7d, 100.0d));
         Fm.setToolTipText("[MHz]");
+        Fm.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         Fm.setName(""); // NOI18N
 
         Amp.setModel(new javax.swing.SpinnerNumberModel(0, 0, 12, 1));
@@ -536,7 +541,7 @@ public class Tomografo extends javax.swing.JFrame {
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(123, 123, 123)
                                 .addComponent(jLabel1)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 230, Short.MAX_VALUE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 212, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -732,41 +737,53 @@ public class Tomografo extends javax.swing.JFrame {
         } catch (MWException ex) {
             Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         if (radial.isSelected() == true || (radial.isSelected() == false && abanico.isSelected() == false)) {
             try {
-                ADQUISICION = new Object[NMEAN * 100];
+                ADQUISICION = new double[NMEAN * 100][];
                 for (int j = 0; j < 100; j++) {
+                    Object[] tmp = null;
                     for (int i = 0; i < NMEAN; i++) {
                         Thread.sleep(2000);
                         afc.Abrir_flujo(HS);
                         gto.GetTriggerOn(HS);
                         // Empieza adquisición de señales
-                        ADQUISICION[j] = ahs.AdquirirHS(2, HS, LADQ);
+                        //ADQUISICION[j] = Arrays.toString(ahs.AdquirirHS(2, HS, LADQ));
+                        tmp = ahs.AdquirirHS(1, HS, LADQ);
+                        //MWNumericArray tmp_one = (MWNumericArray) tmp[0];
+                        //double[] el_bueno = tmp_one.getDoubleData();
+                        //System.out.println(Arrays.toString(el_bueno));
                         gtf.GetTriggerOff(HS);
                         cfc.Cerrar_flujo(HS);
                         //System.out.println(Arrays.toString(ADQUISICION));
                     }
+
+                    MWNumericArray tmp_one = (MWNumericArray) tmp[0];
+                    double[] el_bueno = tmp_one.getDoubleData();
+                    ADQUISICION[j] = el_bueno;
+
                     prueba.enviaDatos("1");
                     prueba.enviaDatos("2");
                 }
+                
+                MLDouble mlDouble = new MLDouble("ADQUISICION", ADQUISICION);
+                ArrayList list = new ArrayList();
+                list.add(mlDouble);
+                
+                new MatFileWriter("resultados.mat", list);
                 //System.out.println(Arrays.toString(ADQUISICION));
-                Double[] ADQFILE = new Double[ADQUISICION.length];
-                for(int i = 0; i < ADQUISICION.length; i++) {
-                    double tmp;
-                    tmp = (double) ADQUISICION[i];
-                    ADQFILE[i] = tmp;
-                }
-                System.out.println(Arrays.toString(ADQFILE));
-                /*MLDouble ml;
-                ml = new MLDouble("arreglo_prueba", ADQFILE, 100);
-                ArrayList lista = new ArrayList();
-                lista.add(ml);
-                new MatFileWriter("prueba.mat", lista);*/
+                /*Double[] ADQFILE = new Double[ADQUISICION.length];
+                 for(int i = 0; i < ADQUISICION.length; i++) {
+                 double tmp;
+                 tmp = (double) ADQUISICION[i];
+                 ADQFILE[i] = tmp;
+                 }*/
+                //System.out.println(Arrays.toString(ADQFILE));
+                
             } catch (InterruptedException ex) {
                 Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
                 Thread.currentThread().interrupt();
-            } catch (MWException ex) {
+            } catch (MWException | IOException ex) {
                 Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
@@ -780,14 +797,14 @@ public class Tomografo extends javax.swing.JFrame {
                             Thread.sleep(2000);
                             afc.Abrir_flujo(HS);
                             gto.GetTriggerOn(HS);
-                            ADQUISICION[i] = ahs.AdquirirHS(2, HS, LADQ);
+                            //ADQUISICION[i] = ahs.AdquirirHS(2, HS, LADQ);
                             gtf.GetTriggerOff(HS);
                             cfc.Cerrar_flujo(HS);
                             //System.out.println(Arrays.toString(ADQUISICION));
                             System.out.println(ADQUISICION[i]);
                         }
                         prueba.enviaDatos("1");
-                       // Thread.sleep(3000);
+                        // Thread.sleep(3000);
                     }
                 }
             } catch (InterruptedException ex) {
