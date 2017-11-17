@@ -3,7 +3,6 @@ mcc -W 'java:AdquirirHS,AdquirirHSC' -T link:lib -d C:\Users\TomografoV2\Documen
 "C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits" to Compiler
 path instance.] 
 [] 
-Creating destination directory: "C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits\AdquirirHS\for_testing\doc\html\"
 Loading source files for package AdquirirHS...
 Constructing Javadoc information...
 Standard Doclet version 1.7.0_60
@@ -28,4 +27,4 @@ Packaging...
 Creating the bundle...
 Web based installer created at C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits\AdquirirHS\for_redistribution\MyAppInstaller_web.exe.
 Packaging complete.
-Elapsed packaging time was: 5 minutes and 47 seconds.
+Elapsed packaging time was: 2 minutes and 13 seconds.

@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="3112556112" file="C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits\InitHS.prj" location="C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits" name="InitHS" preferred-package-location="C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits\InitHS\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.library" target-name="Library Compiler">
+  <configuration build-checksum="2122587436" file="C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits\InitHS.prj" location="C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits" name="InitHS" preferred-package-location="C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits\InitHS\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.library" target-name="Library Compiler">
     <param.appname>InitHS</param.appname>
     <param.icon />
     <param.icons />

@@ -1,19 +1,24 @@
 function ye = ConfigGeneratorHS3(sDll,Amplitude,Fsig,Fm,Opcion)
-Signal=5;
+Signal=5; % <- Esto es muy tonto
 %Modo lineal = 2 y Modo DDS = 1
-if Signal == 5
-   calllib(sDll,'SetFuncGenMode',2);
+if Signal == 5 % <- Esto es muy tonto x2
+   Result = calllib(sDll,'SetFuncGenMode',2);
+   disp(Result);
 else
-   calllib(sDll,'SetFuncGenMode',1); 
+   Result = calllib(sDll,'SetFuncGenMode',1); 
+   disp(Result);
 end
 
-calllib( sDll, 'SetFuncGenSignalType',Signal);
-calllib( sDll, 'SetFuncGenAmplitude',Amplitude);
-calllib( sDll, 'SetFuncGenTrigSource',9);
-calllib( sDll, 'SetFuncGenOutputOn',0); 
+Result = calllib( sDll, 'SetFuncGenSignalType',Signal);
+disp(Result);
+Result = calllib( sDll, 'SetFuncGenAmplitude',Amplitude);
+disp(Result);
+Result = calllib( sDll, 'SetFuncGenTrigSource',9);
+disp(Result);
+% calllib( sDll, 'SetFuncGenOutputOn',0); % No tiene sentido tenerlo aquí
 
 Nven = 3000; %Numero de muestras a formar para la señal a enviar
-if Signal == 5
+if Signal == 5 % <- Esto es muy tonto x3
    FpG    = double(Fm);
  if (Opcion == 1) 
      ye     = pulsoUTsin(Fsig,FpG,Nven);  %Señal Pulso Gaussiano
@@ -39,14 +44,17 @@ if Signal == 5
    pGen = libpointer('uint16Ptr',Gen);
    pGenZeros = libpointer('uint16Ptr',pGenZeros);
   % calllib(sDll,'SetFuncGenOutputOn',0); 
-   calllib(sDll,'FillFuncGenMemory',2^16,pGenZeros); %Borra la memoria
-   calllib(sDll,'FillFuncGenMemory',2^16,pGen);      %Graba los datos
+   Result = calllib(sDll,'FillFuncGenMemory',2^16,pGenZeros); %Borra la memoria
+   disp(Result);
+   Result = calllib(sDll,'FillFuncGenMemory',2^16,pGen);      %Graba los datos
+   disp(Result);
 else
    FpG   = double(Freq); 
    ye    = 0;
 end    
 FppG   = libpointer('doublePtr',double(FpG));
-calllib(sDll,'SetFuncGenFrequency',FppG);
+[Result, dFrequency] = calllib(sDll,'SetFuncGenFrequency',FppG);
+disp(Result);
 %calllib(sDll, 'SetFuncGenOutputOn',0); 
 %calllib(sDll, 'SetFuncGenEnable',1);
 end

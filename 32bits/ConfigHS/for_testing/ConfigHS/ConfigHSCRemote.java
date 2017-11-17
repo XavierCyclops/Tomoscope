@@ -1,6 +1,6 @@
 /*
  * MATLAB Compiler: 6.1 (R2015b)
- * Date: Wed Nov 23 13:36:33 2016
+ * Date: Thu Nov 16 17:28:46 2017
  * Arguments: "-B" "macro_default" "-W" "java:ConfigHS,ConfigHSC" "-T" "link:lib" "-d" 
  * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigHS\\for_testing" 
  * "class{ConfigHSC:C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigHS.m}" 

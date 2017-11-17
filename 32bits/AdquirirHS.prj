@@ -1,10 +1,10 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration build-checksum="853831804" file="C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits\AdquirirHS.prj" location="C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits" name="AdquirirHS" preferred-package-location="C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits\AdquirirHS\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.library" target-name="Library Compiler">
+  <configuration build-checksum="3210269413" file="C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits\AdquirirHS.prj" location="C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits" name="AdquirirHS" preferred-package-location="C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits\AdquirirHS\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.library" target-name="Library Compiler">
     <param.appname>AdquirirHS</param.appname>
     <param.icon />
     <param.icons />
     <param.version>1.0</param.version>
-    <param.authnamewatermark>Javier &amp; Javier</param.authnamewatermark>
+    <param.authnamewatermark />
     <param.email />
     <param.company />
     <param.summary />
@@ -56,6 +56,7 @@
       <param.icon />
       <param.icons />
       <param.version />
+      <param.authnamewatermark />
       <param.email />
       <param.company />
       <param.summary />

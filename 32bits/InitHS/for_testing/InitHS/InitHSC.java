@@ -1,6 +1,6 @@
 /*
  * MATLAB Compiler: 6.1 (R2015b)
- * Date: Thu Dec 15 13:55:08 2016
+ * Date: Thu Nov 16 17:02:53 2017
  * Arguments: "-B" "macro_default" "-W" "java:InitHS,InitHSC" "-T" "link:lib" "-d" 
  * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\InitHS\\for_testing" 
  * "class{InitHSC:C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\InitHS.m}" 
@@ -135,6 +135,8 @@ public class InitHSC extends MWComponentInstance<InitHSC>
      * <p>M-documentation as provided by the author of the M function:
      * <pre>
      * %warning off all
+     *     %TiePieDir = 
+     * 'C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\tiepie.h';
      * </pre>
      * </p>
      * @param lhs List in which to return outputs. Number of outputs (nargout) is
@@ -162,6 +164,8 @@ public class InitHSC extends MWComponentInstance<InitHSC>
      * <p>M-documentation as provided by the author of the M function:
      * <pre>
      * %warning off all
+     *     %TiePieDir = 
+     * 'C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\tiepie.h';
      * </pre>
      * </p>
      * @param lhs array in which to return outputs. Number of outputs (nargout)
@@ -194,6 +198,8 @@ public class InitHSC extends MWComponentInstance<InitHSC>
      * <p>M-documentation as provided by the author of the M function:
      * <pre>
      * %warning off all
+     *     %TiePieDir = 
+     * 'C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\tiepie.h';
      * </pre>
      * </p>
      * @param nargout Number of outputs to return.

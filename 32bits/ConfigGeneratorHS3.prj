@@ -1,5 +1,5 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
-  <configuration file="C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits\ConfigGeneratorHS3.prj" location="C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits" name="ConfigGeneratorHS3" target="target.ezdeploy.library" target-name="Library Compiler">
+  <configuration build-checksum="690552859" file="C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits\ConfigGeneratorHS3.prj" location="C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits" name="ConfigGeneratorHS3" preferred-package-location="C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits\ConfigGeneratorHS3\for_redistribution" preferred-package-type="package.type.exe" target="target.ezdeploy.library" target-name="Library Compiler">
     <param.appname>ConfigGeneratorHS3</param.appname>
     <param.icon />
     <param.icons />
@@ -110,7 +110,12 @@
       </entity.package>
     </fileset.classes>
     <fileset.resources />
-    <fileset.depfun />
+    <fileset.depfun>
+      <file>${PROJECT_ROOT}\pulsoUTcuad.m</file>
+      <file>${PROJECT_ROOT}\pulsoUTcuadn.m</file>
+      <file>${PROJECT_ROOT}\pulsoUTsin.m</file>
+      <file>${PROJECT_ROOT}\pulsoUTsinc.m</file>
+    </fileset.depfun>
     <fileset.package />
     <build-deliverables>
       <file location="${PROJECT_ROOT}\ConfigGeneratorHS3\for_testing" name="doc" optional="false">C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\32bits\ConfigGeneratorHS3\for_testing\doc</file>

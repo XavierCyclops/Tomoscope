@@ -1,6 +1,6 @@
 /*
  * MATLAB Compiler: 6.1 (R2015b)
- * Date: Wed Nov 23 13:29:50 2016
+ * Date: Thu Nov 16 17:19:44 2017
  * Arguments: "-B" "macro_default" "-W" "java:AdquirirHS,AdquirirHSC" "-T" "link:lib" 
  * "-d" 
  * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\AdquirirHS\\for_testing" 
@@ -20,7 +20,7 @@ public class AdquirirHSMCRFactory
    
     
     /** Component's uuid */
-    private static final String sComponentId = "AdquirirHS_5A3B9AB8B476CF6128CD68978EE48535";
+    private static final String sComponentId = "AdquirirHS_FE7DED8BE10809E1D6EB55206976FF4D";
     
     /** Component name */
     private static final String sComponentName = "AdquirirHS";

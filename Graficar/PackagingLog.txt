@@ -1,0 +1,5 @@
+mcc -W 'java:Graficar,GraficarC' -T link:lib -d C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\Graficar\for_testing class{GraficarC:C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope\graficar.m} 
+[Warning: Adding path
+"C:\Users\TomografoV2\Documents\NetBeansProjects\Tomoscope" to Compiler path
+instance.] 
+[] 
