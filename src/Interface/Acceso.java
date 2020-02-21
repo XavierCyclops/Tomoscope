@@ -27,7 +27,7 @@ public class Acceso extends javax.swing.JFrame {
         setResizable(false);
         setTitle("TOMOGRAFO");
         ((JPanel)getContentPane()).setOpaque(false);
-        ImageIcon ichi = new ImageIcon(this.getClass().getResource("/interface/Store.jpeg"));
+        ImageIcon ichi = new ImageIcon(this.getClass().getResource("/Interface/images/Store.jpeg"));
         JLabel fond = new JLabel();
         fond.setIcon(ichi);
         getLayeredPane().add(fond,JLayeredPane.FRAME_CONTENT_LAYER);

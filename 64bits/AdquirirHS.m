@@ -15,6 +15,7 @@ function [dat1,dat2] = AdquirirHS(sDLL, Samples)
    dat2 = get( pData2 , 'Value' );
 
 end
+
    
    
    

@@ -1,0 +1,57 @@
+/*
+ * MATLAB Compiler: 7.0.1 (R2019a)
+ * Date: Thu Feb 20 16:26:19 2020
+ * Arguments: 
+ * "-B""macro_default""-W""java:Landweber,Landweber""-T""link:lib""-d""C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\algoritmos_reconstruccion_jar\\Landweber\\for_testing""class{Landweber:C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\landweber.m}"
+ */
+
+package Landweber;
+
+import com.mathworks.toolbox.javabuilder.*;
+import com.mathworks.toolbox.javabuilder.internal.*;
+
+/**
+ * <i>INTERNAL USE ONLY</i>
+ */
+public class LandweberMCRFactory
+{
+    /** Component's uuid */
+    private static final String sComponentId = "Landweber_A8171D1505B33238C33DB3C8C283E3AA";
+    
+    /** Component name */
+    private static final String sComponentName = "Landweber";
+    
+   
+    /** Pointer to default component options */
+    private static final MWComponentOptions sDefaultComponentOptions = 
+        new MWComponentOptions(
+            MWCtfExtractLocation.EXTRACT_TO_CACHE, 
+            new MWCtfClassLoaderSource(LandweberMCRFactory.class)
+        );
+    
+    
+    private LandweberMCRFactory()
+    {
+        // Never called.
+    }
+    
+    public static MWMCR newInstance(MWComponentOptions componentOptions) throws MWException
+    {
+        if (null == componentOptions.getCtfSource()) {
+            componentOptions = new MWComponentOptions(componentOptions);
+            componentOptions.setCtfSource(sDefaultComponentOptions.getCtfSource());
+        }
+        return MWMCR.newInstance(
+            componentOptions, 
+            LandweberMCRFactory.class, 
+            sComponentName, 
+            sComponentId,
+            new int[]{9,6,0}
+        );
+    }
+    
+    public static MWMCR newInstance() throws MWException
+    {
+        return newInstance(sDefaultComponentOptions);
+    }
+}

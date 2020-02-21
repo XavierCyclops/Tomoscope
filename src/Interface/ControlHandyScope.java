@@ -20,7 +20,6 @@ import java.util.logging.Logger;
 public class ControlHandyScope {
     
     private static final String HS = "HS3";
-    
     // Configuración del generador
     private int SIGNAL = 5;
     private int TRIGGER = 9;
@@ -28,7 +27,6 @@ public class ControlHandyScope {
     // Se recibirá del usuario
     private double AMPLITUDE;
     private double FSIG;
-    
     private static Object[] HANDY;
     
     InitHSC ihsc;
@@ -43,7 +41,6 @@ public class ControlHandyScope {
             Logger.getLogger(ControlHandyScope.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
     // ConfigHS(lib,Samples,Fm)
     // Samples y Fm los pasa el usuario
     // Samples 120000, 0 <= Fm <= 50000
@@ -56,7 +53,6 @@ public class ControlHandyScope {
             Logger.getLogger(ControlHandyScope.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
-    
     // ConfigGeneratorHS3(sDll,Amplitude,Fsig,Fm,Opcion)
     // Amplitude, Fsig, Fm los pasa el usuario
     public void ConfigGenerator(String lib, int amplitude, double fsig, double fm, byte opc) {

@@ -32,7 +32,7 @@ function [Const,Estado]  = InitHS(sDLL)
         end
     catch
         % If SetChEnabled is not supported by the DLL, use SetMeasureMode:
-        Result = calllib( sDLL , 'SetMeasureMode' , 1 );  
+        Result = calllib( sDLL , 'SetMeasureMode' , 3 );  
          disp(Result);
     end
     

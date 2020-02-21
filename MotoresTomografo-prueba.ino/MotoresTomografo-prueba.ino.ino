@@ -15,6 +15,7 @@ int Amarillo2 = 5;
 int Naranja2 = 4;
 //Java
 int Op = 0;
+int d = 1500;
 
 int mSecPaso = 5000;/*tiempo en microsegundos entre paso y paso la velocidad sera:
   velocidad=1000000/mSecPaso en vueltas/segundo. Valor minimo 750 maximo 2350
@@ -72,7 +73,25 @@ void dormirmotor2() {
   digitalWrite(Naranja2, LOW);
 }
 
+void amarrarmotor1() {
 
+  digitalWrite(ActA, HIGH);
+
+  digitalWrite(Rojo, HIGH);
+  digitalWrite(Azul, HIGH);
+  digitalWrite(Amarillo, HIGH);
+  digitalWrite(Naranja, HIGH);
+}
+
+void amarrarmotor2() {
+
+  digitalWrite(ActB, HIGH);
+
+  digitalWrite(Rojo2, HIGH);
+  digitalWrite(Azul2, HIGH);
+  digitalWrite(Amarillo2, HIGH);
+  digitalWrite(Naranja2, HIGH);
+}
 
 
 void derechamotor1() {
@@ -107,7 +126,7 @@ void derechamotor1() {
   digitalWrite(Naranja, LOW);
 
   delayMicroseconds(mSecPaso);
-  delay(1000);
+  delay(d);
 
 }//FIN derechamotor1
 
@@ -144,7 +163,7 @@ void derechamotor2() {
   digitalWrite(Naranja2, LOW);
 
   delayMicroseconds(mSecPaso);
-  delay(1000);
+  delay(d);
 
 }//FIN derechamotor2
 
@@ -179,7 +198,7 @@ void izquierdamotor1() {
 
 
   delayMicroseconds(mSecPaso);
-  delay(1000);
+  delay(d);
 }
 
 void izquierdamotor2() {
@@ -211,44 +230,39 @@ void izquierdamotor2() {
   digitalWrite(Naranja2, LOW);
 
   delayMicroseconds(mSecPaso);
-  delay(1000);
+  delay(d);
 }//FIN izquierdamotor2
 
 void loop() {
   //Coneccion a JAVA
   Op = Serial.read();
 
+//modificacion
+//  for (int i = 0; i <= 99; i++) {
+//        amarrarmotor1();
+//        amarrarmotor2();
+//        derechamotor2();
+//        amarrarmotor1();
+//        amarrarmotor2();
+//         izquierdamotor1();
+//        amarrarmotor1();
+//        amarrarmotor2();
+//        }
 
-      
   switch (Op) {
 
     case '1':
     izquierdamotor1();
     dormirmotor1();
-//      for (int i = 0; i <= 99; i++) {
-//        izquierdamotor2();
-//        dormirmotor2();
-//        izquierdamotor1();
-//        dormirmotor1();
-//      }
-      //radial
       break;
 
     case '2':
-    izquierdamotor2();
+    derechamotor2();
     dormirmotor2();
-//      for (int i = 0; i <= 99; i++) {
-//        izquierdamotor2();
-//        dormirmotor2();
-//        for (int j = 0; j <= 100; j++) {
-//          izquierdamotor1();
-//          dormirmotor1();
-//        }
-     // }abanico
       break;
 
     case '3':
-      for (int k = 0; k <= 49; k++) {
+      for (int k = 0; k <= 43; k++) {
         izquierdamotor1();
         dormirmotor1();
       }
@@ -260,4 +274,5 @@ void loop() {
       break;
 
   }
+   
 }
