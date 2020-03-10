@@ -1,10 +1,8 @@
 /*
- * MATLAB Compiler: 6.1 (R2015b)
- * Date: Wed Nov 23 13:39:35 2016
- * Arguments: "-B" "macro_default" "-W" "java:Abrir_flujo,Abrir_flujoC" "-T" "link:lib" 
- * "-d" 
- * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\Abrir_flujo\\for_testing" 
- * "class{Abrir_flujoC:C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\Abrir_flujo.m}" 
+ * MATLAB Compiler: 7.0.1 (R2019a)
+ * Date: Wed Mar  4 16:03:30 2020
+ * Arguments: 
+ * "-B""macro_default""-W""java:Abrir_flujo,Abrir_flujoC""-T""link:lib""-d""C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\Abrir_flujo\\for_testing""class{Abrir_flujoC:C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\Abrir_flujo.m}"
  */
 
 package Abrir_flujo;
@@ -14,10 +12,10 @@ import com.mathworks.toolbox.javabuilder.internal.*;
 import java.util.*;
 
 /**
- * The <code>Abrir_flujoC</code> class provides a Java interface to the M-functions
- * from the files:
+ * The <code>Abrir_flujoC</code> class provides a Java interface to MATLAB functions. 
+ * The interface is compiled from the following files:
  * <pre>
- *  C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\Abrir_flujo.m
+ *  C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\Abrir_flujo.m
  * </pre>
  * The {@link #dispose} method <b>must</b> be called on a <code>Abrir_flujoC</code> 
  * instance when it is no longer needed to ensure that native resources allocated by this 
@@ -33,7 +31,7 @@ public class Abrir_flujoC extends MWComponentInstance<Abrir_flujoC>
     private static final Set<Disposable> sInstances = new HashSet<Disposable>();
 
     /**
-     * Maintains information used in calling the <code>Abrir_flujo</code> M-function.
+     * Maintains information used in calling the <code>Abrir_flujo</code> MATLAB function.
      */
     private static final MWFunctionSignature sAbrir_flujoSignature =
         new MWFunctionSignature(/* max outputs = */ 0,
@@ -44,6 +42,7 @@ public class Abrir_flujoC extends MWComponentInstance<Abrir_flujoC>
 
     /**
      * Shared initialization implementation - private
+     * @throws MWException An error has occurred during the function call.
      */
     private Abrir_flujoC (final MWMCR mcr) throws MWException
     {
@@ -56,6 +55,7 @@ public class Abrir_flujoC extends MWComponentInstance<Abrir_flujoC>
 
     /**
      * Constructs a new instance of the <code>Abrir_flujoC</code> class.
+     * @throws MWException An error has occurred during the function call.
      */
     public Abrir_flujoC() throws MWException
     {
@@ -71,9 +71,10 @@ public class Abrir_flujoC extends MWComponentInstance<Abrir_flujoC>
     
     /**
      * @deprecated Please use the constructor {@link #Abrir_flujoC(MWComponentOptions componentOptions)}.
-     * The <code>com.mathworks.toolbox.javabuilder.MWComponentOptions</code> class provides API to set the
+     * The <code>com.mathworks.toolbox.javabuilder.MWComponentOptions</code> class provides an API to set the
      * path to the component.
      * @param pathToComponent Path to component directory.
+     * @throws MWException An error has occurred during the function call.
      */
     public Abrir_flujoC(String pathToComponent) throws MWException
     {
@@ -85,6 +86,7 @@ public class Abrir_flujoC extends MWComponentInstance<Abrir_flujoC>
      * constructor to specify the options required to instantiate this component.  The 
      * options will be specific to the instance of this component being created.
      * @param componentOptions Options specific to the component.
+     * @throws MWException An error has occurred during the function call.
      */
     public Abrir_flujoC(MWComponentOptions componentOptions) throws MWException
     {
@@ -104,8 +106,10 @@ public class Abrir_flujoC extends MWComponentInstance<Abrir_flujoC>
     }
   
     /**
-     * Invokes the first m-function specified by MCC, with any arguments given on
+     * Invokes the first MATLAB function specified to MCC, with any arguments given on
      * the command line, and prints the result.
+     *
+     * @param args arguments to the function
      */
     public static void main (String[] args)
     {
@@ -130,9 +134,9 @@ public class Abrir_flujoC extends MWComponentInstance<Abrir_flujoC>
     }
 
     /**
-     * Provides the interface for calling the <code>Abrir_flujo</code> M-function 
-     * where the first input, an instance of List, receives the output of the M-function and
-     * the second input, also an instance of List, provides the input to the M-function.
+     * Provides the interface for calling the <code>Abrir_flujo</code> MATLAB function 
+     * where the first argument, an instance of List, receives the output of the MATLAB function and
+     * the second argument, also an instance of List, provides the input to the MATLAB function.
      * @param lhs List in which to return outputs. Number of outputs (nargout) is
      * determined by allocated size of this List. Outputs are returned as
      * sub-classes of <code>com.mathworks.toolbox.javabuilder.MWArray</code>.
@@ -152,9 +156,9 @@ public class Abrir_flujoC extends MWComponentInstance<Abrir_flujoC>
     }
 
     /**
-     * Provides the interface for calling the <code>Abrir_flujo</code> M-function 
-     * where the first input, an Object array, receives the output of the M-function and
-     * the second input, also an Object array, provides the input to the M-function.
+     * Provides the interface for calling the <code>Abrir_flujo</code> MATLAB function 
+     * where the first argument, an Object array, receives the output of the MATLAB function and
+     * the second argument, also an Object array, provides the input to the MATLAB function.
      * @param lhs array in which to return outputs. Number of outputs (nargout)
      * is determined by allocated size of this array. Outputs are returned as
      * sub-classes of <code>com.mathworks.toolbox.javabuilder.MWArray</code>.
@@ -175,14 +179,14 @@ public class Abrir_flujoC extends MWComponentInstance<Abrir_flujoC>
     }
 
     /**
-     * Provides the standard interface for calling the <code>Abrir_flujo</code>
-     * M-function with 1 input argument.
+     * Provides the standard interface for calling the <code>Abrir_flujo</code> MATLAB function with 
+     * 1 input argument.
      * Input arguments may be passed as sub-classes of
      * <code>com.mathworks.toolbox.javabuilder.MWArray</code>, or as arrays of
      * any supported Java type. Arguments passed as Java types are converted to
      * MATLAB arrays according to default conversion rules.
      *
-     * @param rhs The inputs to the M function.
+     * @param rhs The inputs to the MATLAB function.
      * @return Array of length nargout containing the function outputs. Outputs
      * are returned as sub-classes of
      * <code>com.mathworks.toolbox.javabuilder.MWArray</code>. Each output array

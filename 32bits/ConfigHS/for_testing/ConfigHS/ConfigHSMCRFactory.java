@@ -1,9 +1,8 @@
 /*
- * MATLAB Compiler: 6.1 (R2015b)
- * Date: Thu Nov 16 17:28:46 2017
- * Arguments: "-B" "macro_default" "-W" "java:ConfigHS,ConfigHSC" "-T" "link:lib" "-d" 
- * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigHS\\for_testing" 
- * "class{ConfigHSC:C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigHS.m}" 
+ * MATLAB Compiler: 7.0.1 (R2019a)
+ * Date: Wed Mar  4 16:01:57 2020
+ * Arguments: 
+ * "-B""macro_default""-W""java:ConfigHS,ConfigHSC""-T""link:lib""-d""C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigHS\\for_testing""class{ConfigHSC:C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigHS.m}"
  */
 
 package ConfigHS;
@@ -16,10 +15,8 @@ import com.mathworks.toolbox.javabuilder.internal.*;
  */
 public class ConfigHSMCRFactory
 {
-   
-    
     /** Component's uuid */
-    private static final String sComponentId = "ConfigHS_82BFFD6C68B72865C5E67B802E208B0E";
+    private static final String sComponentId = "ConfigHS_806BE12456F129F9F40BAC803AE803CB";
     
     /** Component name */
     private static final String sComponentName = "ConfigHS";
@@ -49,7 +46,7 @@ public class ConfigHSMCRFactory
             ConfigHSMCRFactory.class, 
             sComponentName, 
             sComponentId,
-            new int[]{9,0,0}
+            new int[]{9,6,0}
         );
     }
     

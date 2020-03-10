@@ -1,6 +1,6 @@
 /*
  * MATLAB Compiler: 7.0.1 (R2019a)
- * Date: Thu Feb 20 15:00:13 2020
+ * Date: Mon Feb 24 15:26:42 2020
  * Arguments: 
  * "-B""macro_default""-W""java:GrafImg,GrafImg""-T""link:lib""-d""C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\GrafImg\\for_testing""class{GrafImg:C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\graficar.m}"
  */
@@ -16,7 +16,7 @@ import com.mathworks.toolbox.javabuilder.internal.*;
 public class GrafImgMCRFactory
 {
     /** Component's uuid */
-    private static final String sComponentId = "GrafImg_595DE1F1CB3F884A65A041DC817A8A64";
+    private static final String sComponentId = "GrafImg_BAAFFA50B131B218359ADD4FF03C48D8";
     
     /** Component name */
     private static final String sComponentName = "GrafImg";

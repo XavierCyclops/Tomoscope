@@ -5,8 +5,6 @@
  */
 package Interface;
 
-import java.awt.Color;
-import java.awt.event.KeyEvent;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.ImageIcon;
@@ -14,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-import graficar.*;
 
 // Adquisiciones del HandyScope HS3 56 22 66 90 ext 108 roberto herrera
 import AdquirirHS.*;
@@ -22,18 +19,13 @@ import Abrir_flujo.*;
 import Cerrar_flujo.*;
 import GetTriggerOn.*;
 import GetTriggerOff.*;
+import GrafImg.GrafImg;
 import com.mathworks.toolbox.javabuilder.MWException;
 import com.jmatio.io.MatFileWriter;
 import com.jmatio.types.MLDouble;
-import com.mathworks.toolbox.javabuilder.MWClassID;
-import com.mathworks.toolbox.javabuilder.MWComplexity;
 import com.mathworks.toolbox.javabuilder.MWNumericArray;
-import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Arrays;
 import program.design;
 
 /**
@@ -62,7 +54,7 @@ public class Tomografo extends javax.swing.JFrame{
      Se crea un nuevo objeto ControlHandyScope que contiene las configuraciones
      del HS3
      */
-    private String HS = "HS3";
+    private String HS = "hs3";
     ControlHandyScope chs = new ControlHandyScope();
 
     AdquirirHSC ahs;
@@ -70,7 +62,7 @@ public class Tomografo extends javax.swing.JFrame{
     Cerrar_flujoC cfc;
     GetTriggerOnC gto;
     GetTriggerOffC gtf;
-    Grafica grt;
+    GrafImg gImg;
     
     design reconstruccion;
 
@@ -707,7 +699,7 @@ public class Tomografo extends javax.swing.JFrame{
             cfc = new Cerrar_flujoC();
             gto = new GetTriggerOnC();
             gtf = new GetTriggerOffC();
-            grt = new Grafica();
+            gImg = new GrafImg();
             
         } catch (MWException ex) {
             Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
@@ -745,6 +737,10 @@ public class Tomografo extends javax.swing.JFrame{
                     
                     prueba.enviaDatos("1");
                     prueba.enviaDatos("2");
+                    if (jButton3.isSelected()){
+                        System.out.println("Me detengo");
+                        break;
+                    }
                 }
                 
                 MLDouble mlDouble = new MLDouble("ADQUISICION", ADQUISICION);
@@ -763,6 +759,15 @@ public class Tomografo extends javax.swing.JFrame{
                  ADQFILE[i] = tmp;
                  }*/
                 //System.out.println(Arrays.toString(ADQFILE));
+
+                try {
+                    gImg.graficar(1, "resultados.mat");
+                    JLabel sinograma = new JLabel();
+                    sinograma.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("algo.png")));
+                    Image.add(sinograma);
+                } catch (Exception e) {
+                    Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, e);
+                }
                 
             } catch (InterruptedException ex) {
                 Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
@@ -771,6 +776,7 @@ public class Tomografo extends javax.swing.JFrame{
                 Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
+        
 // Se inicia el modo abanico 
         if (abanico.isSelected() == true) {
             try {
@@ -812,7 +818,17 @@ public class Tomografo extends javax.swing.JFrame{
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        prueba.enviaDatos("4");
+        
+        try {
+             
+             ImageIcon a = new ImageIcon(this.getClass().getClassLoader().getResource("Interface/images/GGray.png"));
+             JLabel sinograma = new JLabel();
+            sinograma.setIcon(a);
+            Image.add(sinograma);
+        } catch (java.lang.NullPointerException e) {
+            e.printStackTrace();
+        }
+       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed

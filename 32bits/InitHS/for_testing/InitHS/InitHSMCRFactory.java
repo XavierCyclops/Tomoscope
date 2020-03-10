@@ -1,9 +1,8 @@
 /*
- * MATLAB Compiler: 6.1 (R2015b)
- * Date: Thu Dec 07 18:44:41 2017
- * Arguments: "-B" "macro_default" "-W" "java:InitHS,InitHSC" "-T" "link:lib" "-d" 
- * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\InitHS\\for_testing" 
- * "class{InitHSC:C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\InitHS.m}" 
+ * MATLAB Compiler: 7.0.1 (R2019a)
+ * Date: Wed Mar  4 16:48:54 2020
+ * Arguments: 
+ * "-B""macro_default""-W""java:InitHS,InitHSC""-T""link:lib""-d""C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\InitHS\\for_testing""class{InitHSC:C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\InitHS.m}"
  */
 
 package InitHS;
@@ -16,10 +15,8 @@ import com.mathworks.toolbox.javabuilder.internal.*;
  */
 public class InitHSMCRFactory
 {
-   
-    
     /** Component's uuid */
-    private static final String sComponentId = "InitHS_2CD6345E4369BBB2652F487E82EE0E2D";
+    private static final String sComponentId = "InitHS_14FC8AA5B4902ECE9B0134E92E1C0692";
     
     /** Component name */
     private static final String sComponentName = "InitHS";
@@ -49,7 +46,7 @@ public class InitHSMCRFactory
             InitHSMCRFactory.class, 
             sComponentName, 
             sComponentId,
-            new int[]{9,0,0}
+            new int[]{9,6,0}
         );
     }
     

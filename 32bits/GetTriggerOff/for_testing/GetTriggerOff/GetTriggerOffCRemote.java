@@ -1,10 +1,8 @@
 /*
- * MATLAB Compiler: 6.1 (R2015b)
- * Date: Thu Feb 02 13:47:49 2017
- * Arguments: "-B" "macro_default" "-W" "java:GetTriggerOff,GetTriggerOffC" "-T" 
- * "link:lib" "-d" 
- * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\GetTriggerOff\\for_testing" 
- * "class{GetTriggerOffC:C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\GetTriggerOff.m}" 
+ * MATLAB Compiler: 7.0.1 (R2019a)
+ * Date: Wed Mar  4 16:04:50 2020
+ * Arguments: 
+ * "-B""macro_default""-W""java:GetTriggerOff,GetTriggerOffC""-T""link:lib""-d""C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\GetTriggerOff\\for_testing""class{GetTriggerOffC:C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\GetTriggerOff.m}"
  */
 
 package GetTriggerOff;
@@ -16,9 +14,9 @@ import java.rmi.RemoteException;
 
 /**
  * The <code>GetTriggerOffCRemote</code> class provides a Java RMI-compliant interface to 
- * the M-functions from the files:
+ * MATLAB functions. The interface is compiled from the following files:
  * <pre>
- *  C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\GetTriggerOff.m
+ *  C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\GetTriggerOff.m
  * </pre>
  * The {@link #dispose} method <b>must</b> be called on a 
  * <code>GetTriggerOffCRemote</code> instance when it is no longer needed to ensure that 
@@ -33,8 +31,8 @@ import java.rmi.RemoteException;
 public interface GetTriggerOffCRemote extends Poolable
 {
     /**
-     * Provides the standard interface for calling the <code>GetTriggerOff</code> 
-     * M-function with 1 input argument.  
+     * Provides the standard interface for calling the <code>GetTriggerOff</code> MATLAB 
+     * function with 1 input argument.  
      *
      * Input arguments to standard interface methods may be passed as sub-classes of 
      * <code>com.mathworks.toolbox.javabuilder.MWArray</code>, or as arrays of any 
@@ -46,20 +44,23 @@ public interface GetTriggerOffCRemote extends Poolable
      * Remote (pass-by-reference) as per the RMI specification.
      *
      * No usage documentation is available for this function.  (To fix this, the function 
-     * author should insert a help comment at the beginning of their M code.  See the 
-     * MATLAB documentation for more details.)
+     * author should insert a help comment at the beginning of their MATLAB code.  See 
+     * the MATLAB documentation for more details.)
      *
-     * @param rhs The inputs to the M function.
+     * @param rhs The inputs to the MATLAB function.
      *
      * @return Array of length nargout containing the function outputs. Outputs are 
      * returned as sub-classes of <code>com.mathworks.toolbox.javabuilder.MWArray</code>. 
      * Each output array should be freed by calling its <code>dispose()</code> method.
      *
-     * @throws java.jmi.RemoteException An error has occurred during the function call or 
+     * @throws java.rmi.RemoteException An error has occurred during the function call or 
      * in communication with the server.
      */
     public Object[] GetTriggerOff(Object... rhs) throws RemoteException;
   
-    /** Frees native resources associated with the remote server object */
+    /** 
+     * Frees native resources associated with the remote server object 
+     * @throws java.rmi.RemoteException An error has occurred during the function call or in communication with the server.
+     */
     void dispose() throws RemoteException;
 }

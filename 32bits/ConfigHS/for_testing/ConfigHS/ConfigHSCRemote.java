@@ -1,9 +1,8 @@
 /*
- * MATLAB Compiler: 6.1 (R2015b)
- * Date: Thu Nov 16 17:28:46 2017
- * Arguments: "-B" "macro_default" "-W" "java:ConfigHS,ConfigHSC" "-T" "link:lib" "-d" 
- * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigHS\\for_testing" 
- * "class{ConfigHSC:C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigHS.m}" 
+ * MATLAB Compiler: 7.0.1 (R2019a)
+ * Date: Wed Mar  4 16:01:57 2020
+ * Arguments: 
+ * "-B""macro_default""-W""java:ConfigHS,ConfigHSC""-T""link:lib""-d""C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigHS\\for_testing""class{ConfigHSC:C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigHS.m}"
  */
 
 package ConfigHS;
@@ -14,10 +13,10 @@ import java.rmi.Remote;
 import java.rmi.RemoteException;
 
 /**
- * The <code>ConfigHSCRemote</code> class provides a Java RMI-compliant interface to the 
- * M-functions from the files:
+ * The <code>ConfigHSCRemote</code> class provides a Java RMI-compliant interface to 
+ * MATLAB functions. The interface is compiled from the following files:
  * <pre>
- *  C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigHS.m
+ *  C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigHS.m
  * </pre>
  * The {@link #dispose} method <b>must</b> be called on a <code>ConfigHSCRemote</code> 
  * instance when it is no longer needed to ensure that native resources allocated by this 
@@ -32,8 +31,8 @@ import java.rmi.RemoteException;
 public interface ConfigHSCRemote extends Poolable
 {
     /**
-     * Provides the standard interface for calling the <code>ConfigHS</code> M-function 
-     * with 3 input arguments.  
+     * Provides the standard interface for calling the <code>ConfigHS</code> MATLAB 
+     * function with 3 input arguments.  
      *
      * Input arguments to standard interface methods may be passed as sub-classes of 
      * <code>com.mathworks.toolbox.javabuilder.MWArray</code>, or as arrays of any 
@@ -44,22 +43,25 @@ public interface ConfigHSCRemote extends Poolable
      * All inputs to this method must implement either Serializable (pass-by-value) or 
      * Remote (pass-by-reference) as per the RMI specification.
      *
-     * M-documentation as provided by the author of the M function:
+     * Documentation as provided by the author of the MATLAB function:
      * <pre>
      * % Set channel range in Volts:
      * </pre>
      *
-     * @param rhs The inputs to the M function.
+     * @param rhs The inputs to the MATLAB function.
      *
      * @return Array of length nargout containing the function outputs. Outputs are 
      * returned as sub-classes of <code>com.mathworks.toolbox.javabuilder.MWArray</code>. 
      * Each output array should be freed by calling its <code>dispose()</code> method.
      *
-     * @throws java.jmi.RemoteException An error has occurred during the function call or 
+     * @throws java.rmi.RemoteException An error has occurred during the function call or 
      * in communication with the server.
      */
     public Object[] ConfigHS(Object... rhs) throws RemoteException;
   
-    /** Frees native resources associated with the remote server object */
+    /** 
+     * Frees native resources associated with the remote server object 
+     * @throws java.rmi.RemoteException An error has occurred during the function call or in communication with the server.
+     */
     void dispose() throws RemoteException;
 }

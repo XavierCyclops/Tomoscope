@@ -1,10 +1,8 @@
 /*
- * MATLAB Compiler: 6.1 (R2015b)
- * Date: Wed Nov 23 13:41:08 2016
- * Arguments: "-B" "macro_default" "-W" "java:Cerrar_flujo,Cerrar_flujoC" "-T" "link:lib" 
- * "-d" 
- * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\Cerrar_flujo\\for_testing" 
- * "class{Cerrar_flujoC:C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\Cerrar_flujo.m}" 
+ * MATLAB Compiler: 7.0.1 (R2019a)
+ * Date: Wed Mar  4 16:04:00 2020
+ * Arguments: 
+ * "-B""macro_default""-W""java:Cerrar_flujo,Cerrar_flujoC""-T""link:lib""-d""C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\Cerrar_flujo\\for_testing""class{Cerrar_flujoC:C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\Cerrar_flujo.m}"
  */
 
 package Cerrar_flujo;
@@ -17,10 +15,8 @@ import com.mathworks.toolbox.javabuilder.internal.*;
  */
 public class Cerrar_flujoMCRFactory
 {
-   
-    
     /** Component's uuid */
-    private static final String sComponentId = "Cerrar_flujo_6D1BF9DA6FC1BD45EC194A58C2377F16";
+    private static final String sComponentId = "Cerrar_flujo_AC4DE850727E4C170702759B485C1221";
     
     /** Component name */
     private static final String sComponentName = "Cerrar_flujo";
@@ -50,7 +46,7 @@ public class Cerrar_flujoMCRFactory
             Cerrar_flujoMCRFactory.class, 
             sComponentName, 
             sComponentId,
-            new int[]{9,0,0}
+            new int[]{9,6,0}
         );
     }
     

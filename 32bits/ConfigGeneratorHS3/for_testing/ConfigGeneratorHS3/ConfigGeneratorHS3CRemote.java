@@ -1,10 +1,8 @@
 /*
- * MATLAB Compiler: 6.1 (R2015b)
- * Date: Thu Nov 16 16:48:13 2017
- * Arguments: "-B" "macro_default" "-W" "java:ConfigGeneratorHS3,ConfigGeneratorHS3C" 
- * "-T" "link:lib" "-d" 
- * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigGeneratorHS3\\for_testing" 
- * "class{ConfigGeneratorHS3C:C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigGeneratorHS3.m}" 
+ * MATLAB Compiler: 7.0.1 (R2019a)
+ * Date: Wed Mar  4 15:54:40 2020
+ * Arguments: 
+ * "-B""macro_default""-W""java:ConfigGeneratorHS3,ConfigGeneratorHS3C""-T""link:lib""-d""C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigGeneratorHS3\\for_testing""class{ConfigGeneratorHS3C:C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigGeneratorHS3.m}"
  */
 
 package ConfigGeneratorHS3;
@@ -16,9 +14,9 @@ import java.rmi.RemoteException;
 
 /**
  * The <code>ConfigGeneratorHS3CRemote</code> class provides a Java RMI-compliant 
- * interface to the M-functions from the files:
+ * interface to MATLAB functions. The interface is compiled from the following files:
  * <pre>
- *  C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigGeneratorHS3.m
+ *  C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigGeneratorHS3.m
  * </pre>
  * The {@link #dispose} method <b>must</b> be called on a 
  * <code>ConfigGeneratorHS3CRemote</code> instance when it is no longer needed to ensure 
@@ -35,7 +33,7 @@ public interface ConfigGeneratorHS3CRemote extends Poolable
 {
     /**
      * Provides the standard interface for calling the <code>ConfigGeneratorHS3</code> 
-     * M-function with 5 input arguments.  
+     * MATLAB function with 5 input arguments.  
      *
      * Input arguments to standard interface methods may be passed as sub-classes of 
      * <code>com.mathworks.toolbox.javabuilder.MWArray</code>, or as arrays of any 
@@ -46,23 +44,26 @@ public interface ConfigGeneratorHS3CRemote extends Poolable
      * All inputs to this method must implement either Serializable (pass-by-value) or 
      * Remote (pass-by-reference) as per the RMI specification.
      *
-     * M-documentation as provided by the author of the M function:
+     * Documentation as provided by the author of the MATLAB function:
      * <pre>
      * %Modo lineal = 2 y Modo DDS = 1
      * </pre>
      *
      * @param nargout Number of outputs to return.
-     * @param rhs The inputs to the M function.
+     * @param rhs The inputs to the MATLAB function.
      *
      * @return Array of length nargout containing the function outputs. Outputs are 
      * returned as sub-classes of <code>com.mathworks.toolbox.javabuilder.MWArray</code>. 
      * Each output array should be freed by calling its <code>dispose()</code> method.
      *
-     * @throws java.jmi.RemoteException An error has occurred during the function call or 
+     * @throws java.rmi.RemoteException An error has occurred during the function call or 
      * in communication with the server.
      */
     public Object[] ConfigGeneratorHS3(int nargout, Object... rhs) throws RemoteException;
   
-    /** Frees native resources associated with the remote server object */
+    /** 
+     * Frees native resources associated with the remote server object 
+     * @throws java.rmi.RemoteException An error has occurred during the function call or in communication with the server.
+     */
     void dispose() throws RemoteException;
 }

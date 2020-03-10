@@ -1,10 +1,8 @@
 /*
- * MATLAB Compiler: 6.1 (R2015b)
- * Date: Wed Nov 23 13:39:35 2016
- * Arguments: "-B" "macro_default" "-W" "java:Abrir_flujo,Abrir_flujoC" "-T" "link:lib" 
- * "-d" 
- * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\Abrir_flujo\\for_testing" 
- * "class{Abrir_flujoC:C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\Abrir_flujo.m}" 
+ * MATLAB Compiler: 7.0.1 (R2019a)
+ * Date: Wed Mar  4 16:03:30 2020
+ * Arguments: 
+ * "-B""macro_default""-W""java:Abrir_flujo,Abrir_flujoC""-T""link:lib""-d""C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\Abrir_flujo\\for_testing""class{Abrir_flujoC:C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\Abrir_flujo.m}"
  */
 
 package Abrir_flujo;
@@ -17,10 +15,8 @@ import com.mathworks.toolbox.javabuilder.internal.*;
  */
 public class Abrir_flujoMCRFactory
 {
-   
-    
     /** Component's uuid */
-    private static final String sComponentId = "Abrir_flujo_0BDBD6AE5B3D3DDF16FA48612C07F33F";
+    private static final String sComponentId = "Abrir_flujo_6772ED7317D3F2FB1FA69103AD2DF991";
     
     /** Component name */
     private static final String sComponentName = "Abrir_flujo";
@@ -50,7 +46,7 @@ public class Abrir_flujoMCRFactory
             Abrir_flujoMCRFactory.class, 
             sComponentName, 
             sComponentId,
-            new int[]{9,0,0}
+            new int[]{9,6,0}
         );
     }
     

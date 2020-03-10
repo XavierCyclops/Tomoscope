@@ -1,10 +1,8 @@
 /*
- * MATLAB Compiler: 6.1 (R2015b)
- * Date: Thu Nov 16 16:48:13 2017
- * Arguments: "-B" "macro_default" "-W" "java:ConfigGeneratorHS3,ConfigGeneratorHS3C" 
- * "-T" "link:lib" "-d" 
- * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigGeneratorHS3\\for_testing" 
- * "class{ConfigGeneratorHS3C:C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigGeneratorHS3.m}" 
+ * MATLAB Compiler: 7.0.1 (R2019a)
+ * Date: Wed Mar  4 15:54:40 2020
+ * Arguments: 
+ * "-B""macro_default""-W""java:ConfigGeneratorHS3,ConfigGeneratorHS3C""-T""link:lib""-d""C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigGeneratorHS3\\for_testing""class{ConfigGeneratorHS3C:C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\ConfigGeneratorHS3.m}"
  */
 
 package ConfigGeneratorHS3;
@@ -17,10 +15,8 @@ import com.mathworks.toolbox.javabuilder.internal.*;
  */
 public class ConfigGeneratorHS3MCRFactory
 {
-   
-    
     /** Component's uuid */
-    private static final String sComponentId = "ConfigGenera_E588337D58C2A6E6E6F25BC187850E8E";
+    private static final String sComponentId = "ConfigGenera_5A0F92BA5807C794C13EA92F2293DA04";
     
     /** Component name */
     private static final String sComponentName = "ConfigGeneratorHS3";
@@ -50,7 +46,7 @@ public class ConfigGeneratorHS3MCRFactory
             ConfigGeneratorHS3MCRFactory.class, 
             sComponentName, 
             sComponentId,
-            new int[]{9,0,0}
+            new int[]{9,6,0}
         );
     }
     

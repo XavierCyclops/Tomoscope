@@ -1,10 +1,8 @@
 /*
- * MATLAB Compiler: 6.1 (R2015b)
- * Date: Thu Feb 02 13:47:49 2017
- * Arguments: "-B" "macro_default" "-W" "java:GetTriggerOff,GetTriggerOffC" "-T" 
- * "link:lib" "-d" 
- * "C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\GetTriggerOff\\for_testing" 
- * "class{GetTriggerOffC:C:\\Users\\TomografoV2\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\GetTriggerOff.m}" 
+ * MATLAB Compiler: 7.0.1 (R2019a)
+ * Date: Wed Mar  4 16:04:50 2020
+ * Arguments: 
+ * "-B""macro_default""-W""java:GetTriggerOff,GetTriggerOffC""-T""link:lib""-d""C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\GetTriggerOff\\for_testing""class{GetTriggerOffC:C:\\Users\\Acustic\\Documents\\NetBeansProjects\\Tomoscope\\32bits\\GetTriggerOff.m}"
  */
 
 package GetTriggerOff;
@@ -17,10 +15,8 @@ import com.mathworks.toolbox.javabuilder.internal.*;
  */
 public class GetTriggerOffMCRFactory
 {
-   
-    
     /** Component's uuid */
-    private static final String sComponentId = "GetTriggerOf_8F0273472E163693DB1090B96ED61588";
+    private static final String sComponentId = "GetTriggerOf_74E01F79CAFA949AA1718F034238D287";
     
     /** Component name */
     private static final String sComponentName = "GetTriggerOff";
@@ -50,7 +46,7 @@ public class GetTriggerOffMCRFactory
             GetTriggerOffMCRFactory.class, 
             sComponentName, 
             sComponentId,
-            new int[]{9,0,0}
+            new int[]{9,6,0}
         );
     }
     

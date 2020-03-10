@@ -17,13 +17,13 @@ function [Const,Estado]  = InitHS(sDLL)
     try
       Result = calllib(sDLL, 'InitInstrument' , 0 );
       Estado = Result;
-      disp(Result);
+      %disp(Result);
     end
     
     
     % Get channel count:
     [ Result , nChannelCount ] = calllib( sDLL , 'GetNrChannels' , 0 );
-     disp(Result);
+     %disp(Result);
     
     % Enable all channels:
     try
