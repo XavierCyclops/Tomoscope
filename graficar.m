@@ -1,4 +1,4 @@
-function X = graficar(Signal, I)
+function graficar(Signal, I)
 a = load(Signal);
 b = a.ADQUISICION;
 offset = 0.2;

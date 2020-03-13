@@ -1,4 +1,4 @@
-GrafImg MATLAB Java Package
+graficar MATLAB Java Package
 
 1. Prerequisites for Deployment 
 
@@ -22,7 +22,7 @@ in the MathWorks Documentation Center.
  
 - Ensure that you have version 1.7 of the Java Development Kit (JDK). 
 
-- GrafImg.jar must be included in your CLASSPATH.
+- graficar.jar must be included in your CLASSPATH.
 
 - javabuilder.jar must be included in your CLASSPATH. javabuilder.jar 
   can be found at: 
@@ -34,14 +34,14 @@ in the MathWorks Documentation Center.
   
 2. Files to Deploy and Package
 
--GrafImg.jar
+-graficar.jar
 -MCRInstaller.exe 
     Note: if end users are unable to download the MATLAB Runtime using the
     instructions in the previous section, include it when building your 
     component by clicking the "Runtime included in package" link in the
     Deployment Tool.
 -Javadoc   
-   - javadoc for GrafImg is in the doc directory. When  
+   - javadoc for graficar is in the doc directory. When  
      distributing the javadoc, this entire directory should be distributed.
 -This readme file
 

@@ -1,6 +1,6 @@
 <deployment-project plugin="plugin.ezdeploy" plugin-version="1.0">
   <configuration file="C:\Users\Acustic\Documents\NetBeansProjects\Tomoscope\GrafImg.prj" location="C:\Users\Acustic\Documents\NetBeansProjects\Tomoscope" name="GrafImg" target="target.ezdeploy.library" target-name="Library Compiler">
-    <param.appname>GrafImg</param.appname>
+    <param.appname>graficar</param.appname>
     <param.icon />
     <param.icons />
     <param.version>1.0</param.version>
@@ -11,7 +11,7 @@
     <param.description />
     <param.screenshot />
     <param.guid />
-    <param.installpath.string>\GrafImg\</param.installpath.string>
+    <param.installpath.string>\graficar\</param.installpath.string>
     <param.installpath.combo>option.installpath.programfiles</param.installpath.combo>
     <param.logo />
     <param.install.notes />
@@ -113,7 +113,7 @@
     <fileset.documentation />
     <build-deliverables>
       <file location="${PROJECT_ROOT}\GrafImg\for_testing" name="doc" optional="false">C:\Users\Acustic\Documents\NetBeansProjects\Tomoscope\GrafImg\for_testing\doc</file>
-      <file location="${PROJECT_ROOT}\GrafImg\for_testing" name="GrafImg.jar" optional="false">C:\Users\Acustic\Documents\NetBeansProjects\Tomoscope\GrafImg\for_testing\GrafImg.jar</file>
+      <file location="${PROJECT_ROOT}\GrafImg\for_testing" name="graficar.jar" optional="false">C:\Users\Acustic\Documents\NetBeansProjects\Tomoscope\GrafImg\for_testing\graficar.jar</file>
     </build-deliverables>
     <workflow />
     <matlab>

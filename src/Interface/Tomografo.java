@@ -12,7 +12,6 @@ import javax.swing.JLabel;
 import javax.swing.JLayeredPane;
 import javax.swing.JPanel;
 
-
 // Adquisiciones del HandyScope HS3 56 22 66 90 ext 108 roberto herrera
 import AdquirirHS.*;
 import Abrir_flujo.*;
@@ -24,6 +23,8 @@ import com.mathworks.toolbox.javabuilder.MWException;
 import com.jmatio.io.MatFileWriter;
 import com.jmatio.types.MLDouble;
 import com.mathworks.toolbox.javabuilder.MWNumericArray;
+import java.awt.Image;
+import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import program.design;
@@ -31,10 +32,9 @@ import program.design;
 /**
  *
  * @author Francisco Javier Gonzalez Huerta
- * @author Javier Juárez Carrillo 
- * UNAM 2016
+ * @author Javier Juárez Carrillo UNAM 2016
  */
-public class Tomografo extends javax.swing.JFrame{
+public class Tomografo extends javax.swing.JFrame {
 
     //Enciende y conecta motores
     Motores prueba = new Motores();
@@ -63,7 +63,8 @@ public class Tomografo extends javax.swing.JFrame{
     GetTriggerOnC gto;
     GetTriggerOffC gtf;
     GrafImg gImg;
-    
+
+
     design reconstruccion;
 
     /* SerialPortEventListener sp = new SerialPortEventListener(){
@@ -81,6 +82,11 @@ public class Tomografo extends javax.swing.JFrame{
      };
      */
     public Tomografo() {
+        try {
+            this.gImg = new GrafImg();
+        } catch (MWException ex) {
+            Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
+        }
         initComponents();
         setResizable(false);
         setTitle("Tomografo-Facultad de Ciencias-GHFJ");
@@ -90,7 +96,6 @@ public class Tomografo extends javax.swing.JFrame{
         fond.setIcon(ichi);
         getLayeredPane().add(fond, JLayeredPane.FRAME_CONTENT_LAYER);
         fond.setBounds(0, 0, ichi.getIconWidth(), ichi.getIconHeight());
-        coneccion.setValue(50);
 
         /*  try{
          ardi.ArduinoRXTX("COM3",2000,9600,sp);
@@ -119,8 +124,6 @@ public class Tomografo extends javax.swing.JFrame{
         FSig = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        coneccion = new javax.swing.JProgressBar();
         radial = new javax.swing.JToggleButton();
         abanico = new javax.swing.JToggleButton();
         jButton1 = new javax.swing.JButton();
@@ -132,7 +135,8 @@ public class Tomografo extends javax.swing.JFrame{
         Amp = new javax.swing.JSpinner();
         jLabel8 = new javax.swing.JLabel();
         Disparos = new javax.swing.JTextField();
-        Image = new javax.swing.JPanel();
+        jPanelImg = new javax.swing.JPanel();
+        imagen = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
         jMenuBar2 = new javax.swing.JMenuBar();
         jMenu7 = new javax.swing.JMenu();
@@ -211,7 +215,7 @@ public class Tomografo extends javax.swing.JFrame{
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel1.setText("SEÑALES");
+        jLabel1.setText("Señales");
 
         jLabel2.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
         jLabel2.setForeground(new java.awt.Color(255, 255, 255));
@@ -234,21 +238,6 @@ public class Tomografo extends javax.swing.JFrame{
         jLabel5.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
         jLabel5.setText("Tamaño de Obtencion");
-
-        jLabel6.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(204, 204, 204));
-        jLabel6.setText("MOTORES");
-
-        coneccion.setForeground(new java.awt.Color(204, 255, 204));
-        coneccion.addAncestorListener(new javax.swing.event.AncestorListener() {
-            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
-            }
-            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
-                coneccionAncestorAdded(evt);
-            }
-            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
-            }
-        });
 
         radial.setBackground(new java.awt.Color(0, 0, 0));
         radial.setFont(new java.awt.Font("Arial Black", 0, 11)); // NOI18N
@@ -330,15 +319,15 @@ public class Tomografo extends javax.swing.JFrame{
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
         jLabel8.setText("Número de Disparos");
 
-        javax.swing.GroupLayout ImageLayout = new javax.swing.GroupLayout(Image);
-        Image.setLayout(ImageLayout);
-        ImageLayout.setHorizontalGroup(
-            ImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+        javax.swing.GroupLayout jPanelImgLayout = new javax.swing.GroupLayout(jPanelImg);
+        jPanelImg.setLayout(jPanelImgLayout);
+        jPanelImgLayout.setHorizontalGroup(
+            jPanelImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(imagen, javax.swing.GroupLayout.DEFAULT_SIZE, 595, Short.MAX_VALUE)
         );
-        ImageLayout.setVerticalGroup(
-            ImageLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 408, Short.MAX_VALUE)
+        jPanelImgLayout.setVerticalGroup(
+            jPanelImgLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(imagen, javax.swing.GroupLayout.DEFAULT_SIZE, 464, Short.MAX_VALUE)
         );
 
         jLabel7.setFont(new java.awt.Font("Arial", 1, 14)); // NOI18N
@@ -500,41 +489,43 @@ public class Tomografo extends javax.swing.JFrame{
                         .addGap(123, 123, 123)
                         .addComponent(jLabel1))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(84, 84, 84)
-                        .addComponent(coneccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(69, 69, 69)
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(217, 217, 217)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(Image, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(114, 114, 114)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(iniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 0, Short.MAX_VALUE))))
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 112, Short.MAX_VALUE)
+                        .addComponent(iniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(91, 91, 91))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel7)
-                        .addGap(188, 188, 188)))
-                .addGap(80, 80, 80))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(118, 118, 118)
-                .addComponent(jLabel6)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jPanelImg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(29, 29, 29))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel7)
+                                .addGap(287, 287, 287))))))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(218, 218, 218))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(56, 56, 56)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jLabel7))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(56, 56, 56)
+                        .addComponent(jLabel1))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel7)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jPanelImg, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(36, 36, 36)
                         .addComponent(radio_sinc)
@@ -567,27 +558,19 @@ public class Tomografo extends javax.swing.JFrame{
                         .addGap(45, 45, 45)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(radial)
-                            .addComponent(abanico))
-                        .addGap(59, 59, 59)
-                        .addComponent(jLabel6))
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(Image, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(83, 83, 83)
+                            .addComponent(abanico))))
+                .addGap(50, 50, 50)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(87, 87, 87))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(iniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addGap(32, 32, 32)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(3, 3, 3)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(layout.createSequentialGroup()
+                            .addComponent(iniciar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
-                        .addComponent(coneccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(40, 40, 40))
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(34, 34, 34))))
         );
 
         Fm.getAccessibleContext().setAccessibleName("");
@@ -642,7 +625,6 @@ public class Tomografo extends javax.swing.JFrame{
         if (true == radial.isSelected()) {
             radial.setOpaque(true);
             abanico.setSelected(false);
-            coneccion.setValue(100);
             prueba.enviaDatos("3");
 
         }
@@ -653,15 +635,10 @@ public class Tomografo extends javax.swing.JFrame{
         if (abanico.isSelected() == true) {
             abanico.setOpaque(true);
             radial.setSelected(false);
-            coneccion.setValue(100);
             prueba.enviaDatos("3");
 
         }
     }//GEN-LAST:event_abanicoActionPerformed
-
-    private void coneccionAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_coneccionAncestorAdded
-        // TODO add your handling code here:
-    }//GEN-LAST:event_coneccionAncestorAdded
 
     private void iniciarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_iniciarActionPerformed
 // Se inicia el modo radial
@@ -700,7 +677,7 @@ public class Tomografo extends javax.swing.JFrame{
             gto = new GetTriggerOnC();
             gtf = new GetTriggerOffC();
             gImg = new GrafImg();
-            
+
         } catch (MWException ex) {
             Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -734,21 +711,19 @@ public class Tomografo extends javax.swing.JFrame{
                     ADQUISICION[j] = el_bueno;
                     //Impresion de imagen de sinograma
                     //grt.graficar(tmp_one,j);
-                    
+
                     prueba.enviaDatos("1");
                     prueba.enviaDatos("2");
-                    if (jButton3.isSelected()){
+                    if (jButton3.isSelected()) {
                         System.out.println("Me detengo");
                         break;
                     }
                 }
-                
+
                 MLDouble mlDouble = new MLDouble("ADQUISICION", ADQUISICION);
                 ArrayList list = new ArrayList();
                 list.add(mlDouble);
 
-
-                
                 new MatFileWriter("resultados.mat", list);
                 System.out.println("FINALIZADO");
                 //System.out.println(Arrays.toString(ADQUISICION));
@@ -760,15 +735,14 @@ public class Tomografo extends javax.swing.JFrame{
                  }*/
                 //System.out.println(Arrays.toString(ADQFILE));
 
-                try {
-                    gImg.graficar(1, "resultados.mat");
-                    JLabel sinograma = new JLabel();
-                    sinograma.setIcon(new ImageIcon(this.getClass().getClassLoader().getResource("algo.png")));
-                    Image.add(sinograma);
-                } catch (Exception e) {
-                    Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, e);
-                }
-                
+                gImg.graficar(1, "resultados.mat", 100.0);
+                ImageIcon a = new ImageIcon(new File("algo.png").getAbsolutePath());
+                //ImageIcon a = new ImageIcon(this.getClass().getClassLoader().getResource("Interface/images/algo.png"));
+                Image imgA = a.getImage();
+                Image imgB = imgA.getScaledInstance(imagen.getWidth(), imagen.getHeight(), Image.SCALE_SMOOTH);
+                ImageIcon smooth = new ImageIcon(imgB);
+                imagen.setIcon(smooth);
+
             } catch (InterruptedException ex) {
                 Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
                 Thread.currentThread().interrupt();
@@ -776,7 +750,7 @@ public class Tomografo extends javax.swing.JFrame{
                 Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        
+
 // Se inicia el modo abanico 
         if (abanico.isSelected() == true) {
             try {
@@ -818,17 +792,17 @@ public class Tomografo extends javax.swing.JFrame{
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        
         try {
-             
-             ImageIcon a = new ImageIcon(this.getClass().getClassLoader().getResource("Interface/images/GGray.png"));
-             JLabel sinograma = new JLabel();
-            sinograma.setIcon(a);
-            Image.add(sinograma);
-        } catch (java.lang.NullPointerException e) {
-            e.printStackTrace();
+            gImg.graficar(0, "resultados.mat", 100.0);
+            ImageIcon a = new ImageIcon(new File("algo.png").getAbsolutePath());
+            //ImageIcon a = new ImageIcon(this.getClass().getClassLoader().getResource("Interface/images/algo.png"));
+            Image imgA = a.getImage();
+            Image imgB = imgA.getScaledInstance(imagen.getWidth(), imagen.getHeight(), Image.SCALE_SMOOTH);
+            ImageIcon smooth = new ImageIcon(imgB);
+            imagen.setIcon(smooth);
+        } catch (MWException ex) {
+            Logger.getLogger(Tomografo.class.getName()).log(Level.SEVERE, null, ex);
         }
-       
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
@@ -894,12 +868,11 @@ public class Tomografo extends javax.swing.JFrame{
     private javax.swing.JTextField Disparos;
     private javax.swing.JTextField FSig;
     private javax.swing.JSpinner Fm;
-    private javax.swing.JPanel Image;
     private javax.swing.ButtonGroup Seniales;
     private javax.swing.JToggleButton abanico;
     private javax.swing.JSpinner adquisicion;
-    private javax.swing.JProgressBar coneccion;
     private javax.swing.JMenuItem guardar;
+    private javax.swing.JLabel imagen;
     private javax.swing.JButton iniciar;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
@@ -909,7 +882,6 @@ public class Tomografo extends javax.swing.JFrame{
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
@@ -930,6 +902,7 @@ public class Tomografo extends javax.swing.JFrame{
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
+    private javax.swing.JPanel jPanelImg;
     private javax.swing.JRadioButton rad_sin;
     private javax.swing.JToggleButton radial;
     private javax.swing.JRadioButton radio_sinc;
